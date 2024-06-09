@@ -1,0 +1,17 @@
+<topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       id="http_responses_lib" is-library="true" title="HttpResponsesLibrary">
+    <snippet id="general_403_response">
+        <procedure collapsible="true">
+            <title><code>403 Forbidden</code></title>
+            <p>The request is forbidden under the provided credentials.</p>
+        </procedure>
+    </snippet>
+
+    <snippet id="general_404_response">
+        <procedure collapsible="true">
+            <title><code>404 Not Found</code></title>
+            <p>The requested resource could not be found.</p>
+        </procedure>
+    </snippet>
+</topic>

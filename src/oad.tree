@@ -7,6 +7,6 @@
 
     <toc-element topic="intro.md" toc-title="Welcome"/>
     <toc-element toc-title="REST Endpoints Reference">
-        <toc-element topic="endpoints_examinations.md" toc-title="Examinations"/>
+        <toc-element topic="endpoints_examinations.topic" toc-title="Examinations"/>
     </toc-element>
 </instance-profile>
