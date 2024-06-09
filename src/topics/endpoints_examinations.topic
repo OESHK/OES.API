@@ -125,4 +125,87 @@
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>
     </chapter>
+
+    <chapter title="Create an examination" id="ch_2">
+        <tldr>
+            <p><code>POST /v1/examinations</code></p>
+            <p>Creates a new examination with parameters.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="request_params_2">
+            <chapter title="Body parameters" id="body_params_2">
+                <deflist>
+
+                    <def>
+                        <title><code>examination_name</code>: <code>string</code></title>
+                        <p>The name of the examination.</p>
+                    </def>
+
+                    <def>
+                        <title><code>examination_year</code>: <code>string</code></title>
+                        <p>
+                            The year of the examination. Can be a non-calendar year.
+                            For example, you may put <code>2023/24</code> to represent
+                            the academic year 2023-2024.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>examination_level</code>: <code>string</code></title>
+                        <p>The examination's level. For example: <code>DSE</code>, <code>TSA</code> etc.
+                            You may also put values like <code>S4E2</code> to represent
+                            the second term examination of Secondary 4.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>subject_code</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>The short code of the subject of the examination.</p>
+                        <p>It is recommended to use codes from the HKEAA. For example, for DSE:</p>
+                        <list>
+                            <li><code>A010C</code> - Chinese Language</li>
+                            <li><code>A030E</code> - Mathematics (Core Part) (English version)</li>
+                            <li><code>A140C</code> - Chemistry (Chinese version)</li>
+                        </list>
+                        <p>However, you may also set whatever value you prefer, as long as
+                        it is under 10 characters.</p>
+                    </def>
+
+                    <def>
+                        <title><code>subject_name</code>: <code>string</code></title>
+                        <p>The name of the subject.</p>
+                    </def>
+
+                    <def>
+                        <title><code>paper_code</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>
+                            The short code of the paper.
+                            Must be a three-character long <code>string</code>.
+                            For example, <code>003</code> for Paper 3.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>paper_name</code>: <code>string</code></title>
+                        <p>The name of the paper. For example: <code>Listening and Integrated Skills (III)</code>.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="responses_2">
+            <procedure collapsible="true">
+                <title><code>201 Created</code></title>
+                <p>Returns the created examination object.</p>
+                <note>
+                    <p>The <code>examination_id</code> is automatically assigned upon creation
+                    and is also included in the returned object.</p>
+                    <p>The <code>examination_status</code> is always set to <code>0 (setup)</code>
+                    by default on creation.</p>
+                </note>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+        </chapter>
+    </chapter>
 </topic>
