@@ -50,7 +50,7 @@
         </chapter>
 
         <chapter title="Responses" id="responses_0">
-            <procedure collapsible="true">
+            <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Example response:</p>
                 <code-block lang="json">
@@ -104,7 +104,7 @@
         </chapter>
 
         <chapter title="Responses" id="responses_1">
-            <procedure collapsible="true">
+            <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Example response:</p>
                 <code-block lang="json">
@@ -195,7 +195,7 @@
         </chapter>
 
         <chapter title="Responses" id="responses_2">
-            <procedure collapsible="true">
+            <procedure collapsible="true" default-state="expanded">
                 <title><code>201 Created</code></title>
                 <p>Returns the created examination object.</p>
                 <note>
@@ -206,6 +206,146 @@
                 </note>
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Update an examination" id="ch_3">
+        <tldr><p><code>PATCH /v1/examinations/{exam_id}</code></p>
+        Updates the information of an existing examination.</tldr>
+        <p>
+            <b>Note:</b>
+            Only fields included in the request body are updated.
+            Fields that are absent from the request body remain unchanged.
+        </p>
+        <p>
+            Empty request body is accepted and will have no effect.
+            Therefore, it is advised not to pass an empty request body to avoid
+            wasting server resources.
+        </p>
+        <note>
+            <code>examination_status</code> cannot be updated with this endpoint.
+            Refer to <a href="#ch_4">update examination status</a> for doing so.
+        </note>
+
+        <chapter title="Request parameters" id="request_params_3">
+            <chapter title="Path parameters" id="path_params_3">
+                <deflist>
+                    <def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to be updated.</p>
+                    </def>
+                </deflist>
+            </chapter>
+            <chapter title="Body parameters" id="body_params_3">
+                <deflist>
+
+                    <def>
+                        <title><code>examination_name</code>: <code>string</code></title>
+                        <p>The name of the examination.</p>
+                    </def>
+
+                    <def>
+                        <title><code>examination_year</code>: <code>string</code></title>
+                        <p>
+                            The year of the examination. Can be a non-calendar year.
+                            For example, you may put <code>2023/24</code> to represent
+                            the academic year 2023-2024.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>examination_level</code>: <code>string</code></title>
+                        <p>The examination's level. For example: <code>DSE</code>, <code>TSA</code> etc.
+                            You may also put values like <code>S4E2</code> to represent
+                            the second term examination of Secondary 4.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>subject_code</code>: <code>string</code></title>
+                        <p>The short code of the subject of the examination.</p>
+                        <p>It is recommended to use codes from the HKEAA. For example, for DSE:</p>
+                        <list>
+                            <li><code>A010C</code> - Chinese Language</li>
+                            <li><code>A030E</code> - Mathematics (Core Part) (English version)</li>
+                            <li><code>A140C</code> - Chemistry (Chinese version)</li>
+                        </list>
+                        <p>However, you may also set whatever value you prefer, as long as
+                            it is under 10 characters.</p>
+                    </def>
+
+                    <def>
+                        <title><code>subject_name</code>: <code>string</code></title>
+                        <p>The name of the subject.</p>
+                    </def>
+
+                    <def>
+                        <title><code>paper_code</code>: <code>string</code></title>
+                        <p>
+                            The short code of the paper.
+                            Must be a three-character long <code>string</code>.
+                            For example, <code>003</code> for Paper 3.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>paper_name</code>: <code>string</code></title>
+                        <p>The name of the paper. For example: <code>Listening and Integrated Skills (III)</code>.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+        <chapter title="Responses" id="responses_3">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>The modification has been made.
+                    The payload of an updated examination object is returned.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Update examination status" id="ch_4">
+        <tldr>
+            <p><code>POST /v1/examinations/{exam_id}/open</code></p>
+            <p>Turns the <code>examination_status</code> of the specified examination from <code>0 (setup)</code> to <code>1 (open)</code>.</p>
+        </tldr>
+
+        <p>An examination is marked as <code>setup</code> at creation to indicate that it is currently being set up.
+            Uploading scanned answer scripts to and/or marking this examination is not allowed at this stage.</p>
+        <p>Once its status is changed to <code>open</code>, Admins can then perform actions such as enrolling candidates, uploading scanned scripts, etc.</p>
+        <warning>
+            <p>Marking an examination as <code>open</code> is an <b>irreversible operation</b>. After you mark an examination as <code>open</code>:</p>
+            <list>
+                <li><p>You cannot change it back to <code>setup</code>.</p></li>
+                <li><p>You cannot add/modify/delete script definitions/script slicing definitions that are linked to this examination.</p></li>
+                <li><p>You must delete the examination and start over setting up the examination if you would like to modify any definitions about it.</p></li>
+            </list>
+            <p>You must ensure that all definitions linked to this examination are properly set before marking it as <code>open</code>.</p>
+        </warning>
+
+        <chapter title="Request parameters" id="request_params_4">
+            <chapter title="Path parameters" id="path_params_4">
+                <deflist>
+
+                    <def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+        <chapter title="Responses" id="responses_4">
+            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <procedure collapsible="true">
+                <title><code>400 Bad Request</code></title>
+                <p>The examination specified is already marked as <code>open</code>.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>
     </chapter>
 </topic>

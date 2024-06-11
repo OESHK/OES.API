@@ -14,4 +14,12 @@
             <p>The requested resource could not be found.</p>
         </procedure>
     </snippet>
+
+    <snippet id="general_204_response_expanded">
+        <procedure collapsible="true" default-state="expanded">
+            <title><code>204 No Content</code></title>
+            <p>The request was accepted and processed successfully.
+            No further information is returned.</p>
+        </procedure>
+    </snippet>
 </topic>
