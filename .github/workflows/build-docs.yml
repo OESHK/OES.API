@@ -1,0 +1,83 @@
+name: Build documentation
+
+permissions:
+    id-token: write
+    pages: write
+
+on:
+    push:
+        branches: ["master"]
+
+concurrency:
+    group: doc-build-deploy
+    cancel-in-progress: true
+
+env:
+    INSTANCE: 'src/oad'
+    ARTIFACT: 'webHelpOAD2-all.zip'
+    DOCKER-VERSION: '241.16003'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Build with Writerside
+              uses: JetBrains/writerside-github-action@v4
+              with:
+                instance: ${{ env.INSTANCE }}
+                artifact: ${{ env.ARTIFACT }}
+                docker-version: ${{ env.DOCKER-VERSION }}
+
+            - name: Save artifact with results
+              uses: actions/upload-artifact@v4
+              with:
+                name: docs
+                path: |
+                  artifacts/${{ env.ARTIFACT }}
+                  artifacts/report.json
+                retention-days: 3
+
+    test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Download artifacts
+              uses: actions/download-artifact@v4
+              with:
+                name: docs
+                path: artifacts
+
+            - name: Test documentation
+              uses: JetBrains/writerside-checker-action@v1
+              with:
+                instance: ${{ env.INSTANCE }}
+
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        needs: [build, test]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Download artifacts
+              uses: actions/download-artifact@v4
+              with:
+                name: docs
+
+            - name: Unzip artifact
+              run: unzip -O UTF-8 -qq '${{ env.ARTIFACT }}' -d dir
+            
+            - name: Setup Pages
+              uses: actions/configure-pages@v4
+      
+            - name: Package and upload Pages artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: dir
+      
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
