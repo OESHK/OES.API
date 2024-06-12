@@ -348,4 +348,37 @@
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>
     </chapter>
+
+    <chapter title="Delete an examination" id="ch_5">
+        <tldr>
+            <p><code>DELETE /v1/examinations/{exam_id}</code></p>
+            <p>Deletes the specified examination.</p>
+        </tldr>
+
+        <warning>
+            <p>Deleting an examination will cause all relevant resources (marking panels, definitions, answer script images, etc.) be also deleted.</p>
+        </warning>
+
+        <chapter title="Request parameters" id="request_params_5">
+
+            <chapter title="Path parameters" id="path_params_5">
+                <deflist>
+
+                    <def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to be deleted.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+
+        </chapter>
+
+        <chapter title="Responses" id="responses_5">
+            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+
+    </chapter>
 </topic>
