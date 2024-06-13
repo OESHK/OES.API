@@ -6,16 +6,11 @@
        id="endpoints_examinations">
 
     <title>REST API endpoints for examinations</title>
-    <procedure>
+    <tldr>
         <p>Use <code>examinations</code> endpoints for creating, modifying, deleting examinations and updating an examination's status.</p>
-    </procedure>
+    </tldr>
 
-    <tip>
-        Unless otherwise stated, all endpoints listed here requires
-        authenticating with a session token. Authenticating anonymously
-        or with login-password will generally result in a <code>403 Forbidden</code>
-        error. See more about authentication.
-    </tip>
+    <include from="api_endpoints_reusable.topic" element-id="notice_on_authentication"/>
 
     <chapter title="List examinations" id="list-all-exams">
         <tldr>
@@ -206,6 +201,7 @@
                 </note>
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_422_response"/>
         </chapter>
     </chapter>
 
@@ -304,6 +300,7 @@
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="general_422_response"/>
         </chapter>
     </chapter>
 

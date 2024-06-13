@@ -1,6 +1,15 @@
 <topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        id="http_responses_lib" is-library="true" title="HttpResponsesLibrary">
+
+    <snippet id="general_204_response_expanded">
+        <procedure collapsible="true" default-state="expanded">
+            <title><code>204 No Content</code></title>
+            <p>The request was accepted and processed successfully.
+                No further information is returned.</p>
+        </procedure>
+    </snippet>
+
     <snippet id="general_403_response">
         <procedure collapsible="true">
             <title><code>403 Forbidden</code></title>
@@ -15,11 +24,12 @@
         </procedure>
     </snippet>
 
-    <snippet id="general_204_response_expanded">
-        <procedure collapsible="true" default-state="expanded">
-            <title><code>204 No Content</code></title>
-            <p>The request was accepted and processed successfully.
-            No further information is returned.</p>
+    <snippet id="general_422_response">
+        <procedure collapsible="true">
+            <title><code>422 Unprocessable</code></title>
+            <p>The request contains error and cannot be processed.</p>
+            <p>Usually, this error can be caused by missing required parameters,
+            value of parameter out of range.</p>
         </procedure>
     </snippet>
 </topic>
