@@ -1,0 +1,14 @@
+<topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       id="api_endpoints_reusable" is-library="true" title="ApiEndpointDocReusableLibrary">
+
+    <snippet id="notice_on_authentication">
+        <tip>
+            Unless otherwise stated, all endpoints listed here requires
+            authenticating with a session token. Authenticating anonymously
+            or with login-password will generally result in a <code>403 Forbidden</code>
+            error. See more about authentication.
+        </tip>
+    </snippet>
+
+</topic>

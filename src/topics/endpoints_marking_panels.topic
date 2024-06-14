@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       id="endpoints_marking_panels">
+
+    <title>REST API endpoints for marking panels</title>
+    <tldr>
+        <p>Use <code>marking_panels</code> endpoints for creating, modifying, and deleting marking panels.</p>
+    </tldr>
+
+    <include from="api_endpoints_reusable.topic" element-id="notice_on_authentication"/>
+
+    <chapter title="Create a marking panel" id="create-panel">
+
+        <tldr>
+            <p><code>POST /v1/marking_panels</code></p>
+            <p>Creates a new marking panel.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="create-panel-params">
+            <chapter title="Body parameters" id="create-panel-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>examination_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which this marking panel is connected.</p>
+                    </def>
+
+                    <def>
+                        <title><code>panel_code</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>
+                            A short code to identify the marking panel.
+                            Usually three to five characters in length.
+                            For example, you can use <code>1A1</code> to represent the first of all marking panels
+                            which is responsible for marking Paper 1 Part A.
+                            Or, you may use <code>3B208</code> to represent the marking panel responsible for marking
+                            Paper 3 Part B2 Question 8.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>panel_description</code>: <code>string</code></title>
+                        <p>A brief and explanatory text describing the purpose/task of this marking panel.</p>
+                        <p>Default: <code>""</code></p>
+                    </def>
+
+                    <def>
+                        <title><code>double_marking</code>: <code>bool</code></title>
+                        <p>Indicates whether the marking panel adopts a Double-Marking policy (usually used in writing papers).</p>
+                        <p>Default: <code>false</code></p>
+                    </def>
+
+                    <def>
+                        <title><code>mark_diff_tolerance</code>: <code>integer</code></title>
+                        <p>
+                            The maximum tolerated mark difference between two markers.
+                            When the difference of marks scored to the same candidate by two markers is greater than
+                            this threshold, the script is sent to the panel's supervisor for marking.
+                            This value only has effect when <code>double_marking</code> is <code>true</code>.
+                        </p>
+                        <p>Range: greater than <code>2</code></p>
+                        <p>Default: <code>2</code></p>
+                    </def>
+
+                    <def>
+                        <title><code>is_mc_panel</code>: <code>bool</code></title>
+                        <p>
+                            Indicates whether the marking panel will be automatically marking multiple-choice questions.
+                            An MC panel will never adopt any double marking policy regardless of values of <code>double_marking</code>
+                            and <code>mark_diff_tolerance</code>.
+                        </p>
+                        <p>Default: <code>false</code></p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="create-panel-responses">
+
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>201 Created</code></title>
+                <p>The request was successful. A created marking panel payload is returned. Example payload:</p>
+                <code-block lang="json">
+                    {
+                        "panel_id": 3849,
+                        "examination_id": 23849,
+                        "panel_code": "204",
+                        "panel_description": "Eng Lang Paper II Q4",
+                        "double_marking": true,
+                        "mark_diff_tolerance": 3,
+                        "is_mc_panel": false,
+                        "panel_status": 0,
+                        "members": {
+                            "supervisors": [ ],
+                            "markers": [ ]
+                        }
+                    }
+                </code-block>
+
+                <note>
+                    <p>
+                        <code>panel_id</code> is automatically assigned upon panel creation.
+                        <code>panel_status</code> is always set to <code>0 (closed)</code> at creation.
+                    </p>
+                </note>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_422_response"/>
+
+        </chapter>
+
+    </chapter>
+
+</topic>
