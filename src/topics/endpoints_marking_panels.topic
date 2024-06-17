@@ -5,7 +5,7 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        id="endpoints_marking_panels">
 
-    <title>REST API endpoints for marking panels</title>
+    <var name="id_postfix"></var><title>REST API endpoints for marking panels</title>
     <tldr>
         <p>Use <code>marking_panels</code> endpoints for creating, modifying, and deleting marking panels.</p>
     </tldr>
@@ -83,7 +83,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>201 Created</code></title>
                 <p>The request was successful. A created marking panel payload is returned. Example payload:</p>
-                <code-block lang="json">
+                <code-block lang="json" id="sample-code--marking-panel%id_postfix%">
                     {
                         "panel_id": 3849,
                         "examination_id": 23849,
@@ -109,7 +109,72 @@
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
+        </chapter>
 
+    </chapter>
+
+    <chapter title="List marking panels of an examination" id="list-panels-of-exam">
+
+        <tldr>
+            <p><code>GET /v1/examinations/{exam_id}/marking_panels</code></p>
+            <p>Lists all marking panels that is linked to the specified examination.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="list-panels-of-exam-params">
+            <chapter title="Path parameters" id="list-panels-of-exam-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which the marking panels are linked.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="list-panels-of-exam-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns an array of marking panels for the examination.</p>
+                <p><b>Note:</b> If no marking panels are linked to the examination, an empty array is returned instead of a <code>404</code> response.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+
+    </chapter>
+
+    <chapter title="Get a marking panel" id="get-panel">
+
+        <tldr>
+            <p><code>GET /v1/marking_panels/{panel_id}</code></p>
+            <p>Gets a marking panel by its ID.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="get-panel-params">
+            <chapter title="Path parameters" id="get-panel-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the marking panel.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-panel-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the requested marking panel. Sample response:</p>
+                <include from="endpoints_marking_panels.topic" element-id="sample-code--marking-panel">
+                    <var name="id_postfix" value="-c93ee"/>
+                </include>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>
 
     </chapter>
