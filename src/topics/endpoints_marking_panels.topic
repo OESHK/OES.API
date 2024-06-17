@@ -5,7 +5,7 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        id="endpoints_marking_panels">
 
-    <var name="id_postfix"></var><title>REST API endpoints for marking panels</title>
+    <title>REST API endpoints for marking panels</title>
     <tldr>
         <p>Use <code>marking_panels</code> endpoints for creating, modifying, and deleting marking panels.</p>
     </tldr>
