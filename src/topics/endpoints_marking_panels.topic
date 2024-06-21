@@ -307,4 +307,36 @@
         </chapter>
     </chapter>
 
+    <chapter title="Delete a marking panel" id="delete-panel">
+        <tldr>
+            <p><code>DELETE /v1/marking_panels/{panel-id}</code></p>
+            Deletes an existing marking panel.
+        </tldr>
+        <p>
+            Deleting marking panel is considered as "modifying" a marking panel.
+            Same limitation regarding the parent examination status applies,
+            i.e. the parent examination's status must not be <code>open</code>
+            or a <code>403 Forbidden</code> response will be generated.
+        </p>
+
+        <chapter title="Request parameters" id="delete-panel-params">
+            <chapter title="Path parameters" id="delete-panel-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>panel-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the marking panel</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="delete-panel-responses">
+            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
 </topic>
