@@ -145,6 +145,47 @@
 
     </chapter>
 
+    <chapter title="Get a marking panel of an examination" id="get-panel-of-exam">
+        <tldr>
+            <p><code>GET /v1/examinations/{exam-id}/marking_panels/{panel-id}</code></p>
+            <p>Gets a specific marking panel of an examination.</p>
+        </tldr>
+
+        <note>
+            Attempt to retrieve an existing marking panel that does not belong to the given examination will result in a <code>404</code> response.
+            If you have a marking panel ID but do not know which examination it belongs to,
+            <a href="#get-panel">get a marking panel by ID</a> instead.
+        </note>
+
+        <chapter title="Request parameters" id="get-panel-of-exam-params">
+            <chapter title="Path parameters" id="get-panel-of-exam-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>exam-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination of the marking panel.</p>
+                    </def>
+
+                    <def>
+                        <title><code>panel-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the marking panel.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-panel-of-exam-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Sample response:</p>
+                <include from="endpoints_marking_panels.topic" element-id="sample-code--marking-panel"/>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
     <chapter title="Get a marking panel" id="get-panel">
 
         <tldr>
