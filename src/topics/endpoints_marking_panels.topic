@@ -48,7 +48,10 @@
 
                     <def>
                         <title><code>double_marking</code>: <code>bool</code></title>
-                        <p>Indicates whether the marking panel adopts a Double-Marking policy (usually used in writing papers).</p>
+                        <p>
+                            Indicates whether the marking panel adopts a Double-Marking policy (usually used in writing papers).
+                            At least two markers (excluding supervisors) has to be assigned to the marking panel for the policy to be effective.
+                        </p>
                         <p>Default: <code>false</code></p>
                     </def>
 
@@ -216,6 +219,92 @@
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>
 
+    </chapter>
+
+    <chapter title="Update a marking panel" id="update-panel">
+        <tldr>
+            <p><code>PATCH /v1/marking_panels/{panel-id}</code></p>
+            <p>Updates the fields of the marking panel.</p>
+        </tldr>
+
+        <p>
+            Information of a marking panel can only be modified if the examination
+            it belongs has the status <code>setup</code>.
+            If the status is <code>open</code>, this will result in a
+            <code>403 Forbidden</code> response.
+        </p>
+
+        <chapter title="Request parameters" id="update-panel-params">
+            <chapter title="Path parameters" id="update-panel-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>panel-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the panel to be updated.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+            <chapter title="Body parameters" id="update-panel-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>panel_code</code>: <code>string</code></title>
+                        <p>
+                            A short code to identify the marking panel.
+                            Usually three to five characters in length.
+                            For example, you can use <code>1A1</code> to represent the first of all marking panels
+                            which is responsible for marking Paper 1 Part A.
+                            Or, you may use <code>3B208</code> to represent the marking panel responsible for marking
+                            Paper 3 Part B2 Question 8.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>panel_description</code>: <code>string</code></title>
+                        <p>A brief and explanatory text describing the purpose/task of this marking panel.</p>
+                    </def>
+
+                    <def>
+                        <title><code>double_marking</code>: <code>bool</code></title>
+                        <p>
+                            Indicates whether the marking panel adopts a Double-Marking policy (usually used in writing papers).
+                            At least two markers (excluding supervisors) has to be assigned to the marking panel for the policy to be effective.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>mark_diff_tolerance</code>: <code>integer</code></title>
+                        <p>
+                            The maximum tolerated mark difference between two markers.
+                            When the difference of marks scored to the same candidate by two markers is greater than
+                            this threshold, the script is sent to the panel's supervisor for marking.
+                            This value only has effect when <code>double_marking</code> is <code>true</code>.
+                        </p>
+                        <p>Range: greater than <code>2</code></p>
+                    </def>
+
+                    <def>
+                        <title><code>is_mc_panel</code>: <code>bool</code></title>
+                        <p>
+                            Indicates whether the marking panel will be automatically marking multiple-choice questions.
+                            An MC panel will never adopt any double marking policy regardless of values of <code>double_marking</code>
+                            and <code>mark_diff_tolerance</code>.
+                        </p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="update-panel-response">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>The marking panel has been updated. The updated panel is returned.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
     </chapter>
 
 </topic>
