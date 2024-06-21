@@ -83,7 +83,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>201 Created</code></title>
                 <p>The request was successful. A created marking panel payload is returned. Example payload:</p>
-                <code-block lang="json" id="sample-code--marking-panel%id_postfix%">
+                <snippet id="sample-code--marking-panel"><code-block lang="json">
                     {
                         "panel_id": 3849,
                         "examination_id": 23849,
@@ -98,7 +98,7 @@
                             "markers": [ ]
                         }
                     }
-                </code-block>
+                </code-block></snippet>
 
                 <note>
                     <p>
@@ -169,9 +169,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the requested marking panel. Sample response:</p>
-                <include from="endpoints_marking_panels.topic" element-id="sample-code--marking-panel">
-                    <var name="id_postfix" value="-c93ee"/>
-                </include>
+                <include from="endpoints_marking_panels.topic" element-id="sample-code--marking-panel"/>
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
