@@ -10,7 +10,7 @@
         <p>Use <code>examinations</code> endpoints for creating, modifying, deleting examinations and updating an examination's status.</p>
     </tldr>
 
-    <include from="api_endpoints_reusable.topic" element-id="notice_on_authentication"/>
+    <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
 
     <chapter title="List examinations" id="list-all-exams">
         <tldr>

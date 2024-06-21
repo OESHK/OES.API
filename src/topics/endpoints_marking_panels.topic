@@ -10,7 +10,7 @@
         <p>Use <code>marking_panels</code> endpoints for creating, modifying, and deleting marking panels.</p>
     </tldr>
 
-    <include from="api_endpoints_reusable.topic" element-id="notice_on_authentication"/>
+    <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
 
     <chapter title="Create a marking panel" id="create-panel">
 
