@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       id="endpoints_examinations.candidates_entries">
+
+    <title>REST API endpoints for candidates entries</title>
+    <tldr>
+        <p>
+            Use <code>examinations/candidates_entries</code> endpoints to
+            access candidates registration data of an examination.
+        </p>
+    </tldr>
+
+    <chapter title="Get all registered candidates" id="get-all-candidates">
+        <tldr>
+            <p><code>GET /v1/examinations/{exam-id}/candidates</code></p>
+            <p>Gets all registered candidates of a specific examination.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="get-all-candidates-params">
+            <chapter title="Path parameters" id="get-all-candidates-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>exam-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+
+            <chapter title="Query parameters" id="get-all-candidates-params-query">
+                <deflist>
+
+                    <def>
+                        <title><code>centre-no</code>: <code>string</code></title>
+                        <p>Only get entries of candidate who will take the examination at the
+                        specified examination centre.</p>
+                    </def>
+
+                    <def>
+                        <title><code>page</code>: <code>integer</code></title>
+                        <p>The page number of results to fetch.</p>
+                        <p>Default: <code>1</code></p>
+                    </def>
+
+                    <def>
+                        <title><code>per_page</code>: <code>integer</code></title>
+                        <p>The number of results per page. Set to <code>0</code> for populating all results.</p>
+                        <p>Default: <code>30</code></p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-all-candidates-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns a list of candidate entries based on the query parameters.</p>
+                <p><b>Note:</b> Empty array is returned for query parameters that match
+                no records, rather than a <code>404 Not Found</code> response.</p>
+                <p>Sample response:</p>
+                <snippet id="sample-code--candidates-entries">
+                    <code-block lang="json">
+                        [
+                            {
+                                "candidate_id": "234417354",
+                                "examination_id": 5,
+                                "centre_no": "K1100",
+                                "seat_no": "053"
+                            }
+                        ]
+                    </code-block>
+                </snippet>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <procedure collapsible="true">
+                <title><code>404 Not Found</code></title>
+                <p>The specified <code>exam-id</code> matches no record.</p>
+            </procedure>
+        </chapter>
+    </chapter>
+</topic>

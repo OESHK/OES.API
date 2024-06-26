@@ -7,7 +7,9 @@
 
     <toc-element topic="intro.md" toc-title="Welcome"/>
     <toc-element toc-title="REST Endpoints Reference">
-        <toc-element topic="endpoints_examinations.topic" toc-title="Examinations"/>
+        <toc-element topic="endpoints_examinations.topic" toc-title="Examinations">
+            <toc-element topic="endpoints_examinations.candidates_entries.topic" toc-title="Candidates Entries"/>
+        </toc-element>
         <toc-element topic="endpoints_marking_panels.topic" toc-title="Marking Panels"/>
     </toc-element>
 </instance-profile>
