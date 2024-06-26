@@ -38,6 +38,7 @@
                         <title><code>centre_no</code>: <code>string</code></title>
                         <p>Only get entries of candidate who will take the examination at the
                         specified examination centre.</p>
+                        <p>Wildcard (<code>*</code>) can be used in this field for searching.</p>
                     </def>
 
                     <def>
