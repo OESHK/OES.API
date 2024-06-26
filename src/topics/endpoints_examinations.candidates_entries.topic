@@ -15,7 +15,7 @@
 
     <chapter title="Get all registered candidates" id="get-all-candidates">
         <tldr>
-            <p><code>GET /v1/examinations/{exam-id}/candidates</code></p>
+            <p><code>GET /v1/examinations/{exam_id}/candidates</code></p>
             <p>Gets all registered candidates of a specific examination.</p>
         </tldr>
 
@@ -24,7 +24,7 @@
                 <deflist>
 
                     <def>
-                        <title><code>exam-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the examination.</p>
                     </def>
 
@@ -35,7 +35,7 @@
                 <deflist>
 
                     <def>
-                        <title><code>centre-no</code>: <code>string</code></title>
+                        <title><code>centre_no</code>: <code>string</code></title>
                         <p>Only get entries of candidate who will take the examination at the
                         specified examination centre.</p>
                     </def>

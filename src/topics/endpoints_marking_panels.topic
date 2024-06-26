@@ -150,7 +150,7 @@
 
     <chapter title="Get a marking panel of an examination" id="get-panel-of-exam">
         <tldr>
-            <p><code>GET /v1/examinations/{exam-id}/marking_panels/{panel-id}</code></p>
+            <p><code>GET /v1/examinations/{exam_id}/marking_panels/{panel_id}</code></p>
             <p>Gets a specific marking panel of an examination.</p>
         </tldr>
 
@@ -165,12 +165,12 @@
                 <deflist>
 
                     <def>
-                        <title><code>exam-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the examination of the marking panel.</p>
                     </def>
 
                     <def>
-                        <title><code>panel-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the marking panel.</p>
                     </def>
 
@@ -223,7 +223,7 @@
 
     <chapter title="Update a marking panel" id="update-panel">
         <tldr>
-            <p><code>PATCH /v1/marking_panels/{panel-id}</code></p>
+            <p><code>PATCH /v1/marking_panels/{panel_id}</code></p>
             <p>Updates the fields of the marking panel.</p>
         </tldr>
 
@@ -239,7 +239,7 @@
                 <deflist>
 
                     <def>
-                        <title><code>panel-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the panel to be updated.</p>
                     </def>
 
@@ -309,7 +309,7 @@
 
     <chapter title="Delete a marking panel" id="delete-panel">
         <tldr>
-            <p><code>DELETE /v1/marking_panels/{panel-id}</code></p>
+            <p><code>DELETE /v1/marking_panels/{panel_id}</code></p>
             Deletes an existing marking panel.
         </tldr>
         <p>
@@ -324,7 +324,7 @@
                 <deflist>
 
                     <def>
-                        <title><code>panel-id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the marking panel</p>
                     </def>
 
