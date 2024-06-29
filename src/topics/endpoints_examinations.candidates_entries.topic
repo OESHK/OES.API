@@ -13,6 +13,8 @@
         </p>
     </tldr>
 
+    <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
+
     <chapter title="Get all registered candidates" id="get-all-candidates">
         <tldr>
             <p><code>GET /v1/examinations/{exam_id}/candidates</code></p>
@@ -23,10 +25,10 @@
             <chapter title="Path parameters" id="get-all-candidates-params-path">
                 <deflist>
 
-                    <def>
+                    <snippet id="reuse--path-param--exam-id"><def>
                         <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the examination.</p>
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -72,6 +74,12 @@
                                 "examination_id": 5,
                                 "centre_no": "K1100",
                                 "seat_no": "053"
+                            },
+                            {
+                                "candidate_id": "234423234",
+                                "examination_id": 5,
+                                "centre_no": "K1100",
+                                "seat_no": "054"
                             }
                         ]
                     </code-block>
@@ -81,6 +89,68 @@
             <procedure collapsible="true">
                 <title><code>404 Not Found</code></title>
                 <p>The specified <code>exam-id</code> matches no record.</p>
+            </procedure>
+        </chapter>
+    </chapter>
+
+    <chapter title="Enroll a candidate" id="enroll-candidate">
+        <tldr>
+            <p><code>POST /v1/examinations/{exam_id}/candidates</code></p>
+            Enroll a candidate into the specified examination.
+        </tldr>
+        <chapter title="Request parameters" id="enroll-candidate-params">
+            <chapter title="Path parameters" id="enroll-candidate-params-path">
+                <deflist>
+
+                    <include from="endpoints_examinations.candidates_entries.topic" element-id="reuse--path-param--exam-id"/>
+
+                </deflist>
+            </chapter>
+            <chapter title="Body parameters" id="enroll-candidate-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>candidate_id</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>The ID of the candidate to be enrolled.</p>
+                    </def>
+
+                    <def>
+                        <title><code>centre_no</code>: <code>string</code></title>
+                        <p>The Number of the Examination Centre that the candidate will be sitting the exam.</p>
+                        <p>Default: <code>""</code></p>
+                    </def>
+
+                    <def>
+                        <title><code>seat_no</code>: <code>string</code></title>
+                        <p>The seat number of the candidate in the examination centre.</p>
+                        <p>Default: <code>""</code></p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="enroll-candidate-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the created entry. Sample response:</p>
+                <code-block lang="json">
+                    {
+                        "candidate_id": "234417354",
+                        "examination_id": 78392,
+                        "centre_no": "K1100",
+                        "seat_no": "056"
+                    }
+                </code-block>
+            </procedure>
+            <procedure collapsible="true">
+                <title><code>400 Bad Request</code></title>
+                <p>The candidate has already been enrolled in the specified examination.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <procedure collapsible="true">
+                <title><code>404 Not Found</code></title>
+                <p>Either the candidate ID or the examination ID provided does not exist.</p>
             </procedure>
         </chapter>
     </chapter>
