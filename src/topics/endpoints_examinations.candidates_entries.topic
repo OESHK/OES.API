@@ -183,7 +183,7 @@
                     </def>
 
                     <def>
-                        <title><code>seat_no</code>: <code>integer</code></title>
+                        <title><code>seat_no</code>: <code>string</code></title>
                         <p>The seat number of the candidate.</p>
                     </def>
 
@@ -201,4 +201,33 @@
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>
     </chapter>
+
+    <chapter title="Delete an enrollment entry" id="delete-entry">
+        <tldr>
+            <p><code>DELETE /v1/examinations/{exam_id}/candidates/{candidate_id}</code></p>
+            <p>Remove a candidate's enrollment entry from an examination.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="delete-entry-params">
+            <chapter title="Path parameters" id="delete-entry-params-path">
+                <deflist>
+
+                    <include from="endpoints_examinations.candidates_entries.topic" element-id="reuse--path-param--exam-id"/>
+
+                    <def>
+                        <title><code>candidate_id</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>The ID of the candidate.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="delete-entry-responses">
+            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
 </topic>
