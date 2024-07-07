@@ -10,6 +10,7 @@
         <toc-element toc-title="Examinations" topic="endpoints_examinations.topic">
             <toc-element toc-title="Candidates Entries" topic="endpoints_examinations.candidates_entries.topic"/>
         </toc-element>
+        <toc-element topic="endpoints_examinations.script_defs.topic"/>
         <toc-element toc-title="Marking Panels" topic="endpoints_marking_panels.topic"/>
     </toc-element>
 </instance-profile>

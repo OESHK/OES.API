@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       id="endpoints_examinations.script_defs">
+    <title>Examination Script Definitions</title>
+
+    <tldr>
+        <p>
+            Use <code>script_defs</code> endpoints for interacting with examination script definitions.
+            Examination script definitions tell the system how to process a scanned answer script by
+            defining the basic information about the script. The server looks for related slicing settings
+            that are linked to the script definition to further process the answer script image.
+        </p>
+    </tldr>
+
+    <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
+
+    <chapter title="Create a script definition" id="create-def">
+        <tldr>
+            <p><code>POST /v1/script_defs</code></p>
+            <p>Creates a new examination script definition.</p>
+        </tldr>
+
+        <tip>
+            To maintain consistency between handling of different script images,
+            script definitions cannot be modified upon creation.
+            You must make sure that all properties are properly set when creating a definition.
+            To change settings, you will need to <a href="#delete-def">delete the script definition</a>
+            first.
+        </tip>
+
+        <chapter title="Request parameters" id="create-def-params">
+            <chapter title="Body parameters" id="create-def-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>examination_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which this script definition belongs.</p>
+                    </def>
+
+                    <def>
+                        <title><code>script_type</code>: <code>enum (int)</code> (<b>required</b>)</title>
+                        <p>Type of the script.</p>
+                        <deflist collapsible="true">
+                            <def>
+                                <title><code>0 - MCSheet</code></title>
+                                A computer-marked multiple-choice sheet.
+                            </def>
+                            <def>
+                                <title><code>1 - OralMarkSheet</code></title>
+                                A standard score sheet for oral examination.
+                                (Often used by English Language Paper IV.)
+                            </def>
+                            <def>
+                                <title><code>2 - QuestionAnswerBook</code></title>
+                                A customisable Question-Answer booklet.
+                            </def>
+                            <def>
+                                <title><code>3 - AnswerBook</code></title>
+                                A standard answer book with predefined slicing margins.
+                            </def>
+                        </deflist>
+                    </def>
+
+                    <def>
+                        <title><code>script_size</code>: <code>enum (int)</code> (<b>required</b>)</title>
+                        Size of each sheet of the script.
+                        <deflist collapsible="true">
+                            <def>
+                                <title><code>0 - A3</code></title>
+                                The script is made of A3 size papers folded into an A4 booklet.
+                            </def>
+                            <def>
+                                <title><code>1 - A4</code></title>
+                                The script is an A4 booklet made of A4 size papers.
+                            </def>
+                        </deflist>
+                    </def>
+
+                    <def>
+                        <title><code>sheet_count</code>: <code>integer</code> (<b>required</b>)</title>
+                        Total number of sheets in the script booklet.
+                        This number is <b>NOT</b> the same as the total pages of the script booklet.
+                    </def>
+
+                    <def>
+                        <title><code>script_barcode</code>: <code>string</code> (<b>required</b>)</title>
+                        The expected barcode on the cover the script booklet.
+                        For example, for English Language Paper 3 Part A booklet, a barcode
+                        with value <code>A020E03A</code> is printed on the cover page of the booklet.
+                        This value is used to recognise the booklet when scanning scripts.
+                    </def>
+
+                    <def>
+                        <title><code>script_barcode_range</code>: <code>image_margin (string)</code> (<b>required</b>)</title>
+                        Location information about where to find the barcode.
+                    </def>
+
+                    <def>
+                        <title><code>candidate_barcode_range</code>: <code>object</code> (<b>required</b>)</title>
+                        <p>A series of location information about where to find the candidate's
+                        barcode label on each page.</p>
+                        <p>
+                            The object is of type <code>dict</code>,
+                            with the key being the page number in <code>string</code>
+                            and value being an <code>image_margin</code> in <code>string</code>.
+                            Example:
+                        </p>
+                        <code-block lang="json">
+                            {
+                                "candidate_barcode_range": {
+                                    "3": "60,6,5,80",
+                                    "5": "60,6,5,80"
+                                }
+                            }
+                        </code-block>
+                    </def>
+
+                </deflist>
+            </chapter>
+
+            <chapter title="Responses" id="create-def-responses">
+                <procedure collapsible="true" default-state="expanded">
+                    <title><code>200 OK</code></title>
+                    <p>Returns the created script definition. Sample response:</p>
+                    <code-block lang="json">
+                        {
+                            "script_definition_id": 72983,
+                            "examination_id": 3829,
+                            "script_type": 2,
+                            "script_size": 0,
+                            "script_sheet_count": 3,
+                            "script_barcode": "A020E03A",
+                            "script_barcode_range": "60,80,5,5",
+                            "candidate_barcode_range": {
+                                "3": "60,6,5,80",
+                                "5": "60,6,5,80"
+                            }
+                        }
+                    </code-block>
+                    <note>
+                        The ID of the script definition (<code>script_definition_id</code>)
+                        is automatically assigned upon successful creation.
+                    </note>
+                </procedure>
+                <include from="http_responses_lib.topic" element-id="general_403_response"/>
+                <include from="http_responses_lib.topic" element-id="general_422_response"/>
+            </chapter>
+        </chapter>
+    </chapter>
+
+    <chapter title="Delete a script definition" id="delete-def">
+        <tldr>
+            <p><code>DELETE /v1/script_defs/{script_def_id}</code></p>
+            Deletes the specified examination script definition.
+        </tldr>
+
+        <warning>
+            Deletion of examination script definition will be cascaded to all its related objects,
+            including uploaded script images, script slicing definitions, etc.
+        </warning>
+    </chapter>
+
+</topic>
