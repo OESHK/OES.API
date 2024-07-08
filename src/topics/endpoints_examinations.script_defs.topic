@@ -161,6 +161,25 @@
             Deletion of examination script definition will be cascaded to all its related objects,
             including uploaded script images, script slicing definitions, etc.
         </warning>
+
+        <chapter title="Request parameters" id="delete-def-params">
+            <chapter title="Path parameters" id="delete-def-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the script definition to be deleted.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="delete-def-responses">
+            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
     </chapter>
 
 </topic>
