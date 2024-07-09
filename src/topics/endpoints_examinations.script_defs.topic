@@ -166,10 +166,10 @@
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
 
-                    <def>
+                    <snippet id="reuse-params--path-script-def-id"><def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the script definition to be deleted.</p>
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -177,6 +177,75 @@
 
         <chapter title="Responses" id="delete-def-responses">
             <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get all script definitions of an examination" id="get-all-of-exam">
+        <tldr>
+            <p><code>GET /v1/examinations/{exam_id}/script_defs</code></p>
+            <p>Gets all script definitions of an examination.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="get-all-of-exam-params">
+            <chapter title="Body parameters" id="get-all-of-exam-params-path">
+                <deflist>
+
+                    <snippet id="reuse-params--path-exam-id"><def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination.</p>
+                    </def></snippet>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-all-of-exam-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>
+                    Returns an array of examination script definitions.
+                    An empty array is returned when the examination exists but no definitions have
+                    been created under the examination.
+                </p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <procedure collapsible="true">
+                <title><code>404 Not Found</code></title>
+                <p>An examination with the specified <code>exam_id</code> could not be found.</p>
+            </procedure>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get a script definition of an examination" id="get-def-of-exam">
+        <tldr>
+            <p><code>GET /v1/examinations/{exam_id}/script_defs/{script_def_id}</code></p>
+            <p>Gets a specific script definition under the specified examination.</p>
+        </tldr>
+
+        <note>
+            Attempt to retrieve an existing script definition that does not belong to the
+            specified examination will result in a <code>404 Not Found</code> response.
+        </note>
+
+        <chapter title="Request parameters" id="get-def-of-exam-params">
+            <chapter title="Path parameters" id="get-def-of-exam-params-path">
+                <deflist>
+
+                    <include from="endpoints_examinations.script_defs.topic" element-id="reuse-params--path-exam-id"/>
+
+                    <include from="endpoints_examinations.script_defs.topic" element-id="reuse-params--path-script-def-id"/>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-def-of-exam-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns a list of script definitions of the examination specified.</p>
+            </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>
