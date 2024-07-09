@@ -125,7 +125,7 @@
                 <procedure collapsible="true" default-state="expanded">
                     <title><code>200 OK</code></title>
                     <p>Returns the created script definition. Sample response:</p>
-                    <code-block lang="json">
+                    <snippet id="reuse-code--script-def"><code-block lang="json">
                         {
                             "script_definition_id": 72983,
                             "examination_id": 3829,
@@ -139,7 +139,7 @@
                                 "5": "60,6,5,80"
                             }
                         }
-                    </code-block>
+                    </code-block></snippet>
                     <note>
                         The ID of the script definition (<code>script_definition_id</code>)
                         is automatically assigned upon successful creation.
@@ -166,10 +166,10 @@
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
 
-                    <snippet id="reuse-params--path-script-def-id"><def>
+                    <def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the script definition to be deleted.</p>
-                    </def></snippet>
+                    </def>
 
                 </deflist>
             </chapter>
@@ -235,7 +235,10 @@
 
                     <include from="endpoints_examinations.script_defs.topic" element-id="reuse-params--path-exam-id"/>
 
-                    <include from="endpoints_examinations.script_defs.topic" element-id="reuse-params--path-script-def-id"/>
+                    <snippet id="reuse-params--path-script-def-id"><def>
+                        <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination script definition.</p>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -245,6 +248,31 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns a list of script definitions of the examination specified.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get a script definition" id="get-def">
+        <tldr>
+            <p><code>GET /v1/script_defs/{script_def_id}</code></p>
+            <p>Gets a specific examination script definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="get-def-params">
+            <chapter title="Path parameters" id="get-def-params-path">
+                <deflist>
+                    <include from="endpoints_examinations.script_defs.topic" element-id="reuse-params--path-script-def-id"/>
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the required examination script definition. Sample response:</p>
+                <include from="endpoints_examinations.script_defs.topic" element-id="reuse-code--script-def"/>
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
