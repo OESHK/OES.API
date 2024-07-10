@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Non-MC Questions" id="endpoints_examination_script_defs.question_defs.non_mcqs">
+
+    <title>REST API endpoints for Non-MCQs</title>
+
+    <tldr>
+        <p>
+            Use <code>script_defs/question_defs/non-mcqs</code> endpoints to define
+            a non-MCQ's image location, maximum marks, etc.
+        </p>
+    </tldr>
+
+    <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
+
+    <chapter title="Create a non-MCQ definition" id="create-def">
+        <tldr>
+            <p><code>POST /v1/script_defs/{script_def_id}/question_defs/non_mcqs</code></p>
+            Creates a definition for a non-MC question.
+        </tldr>
+
+        <chapter title="Request parameters" id="create-def-params">
+            <chapter title="Path parameters" id="create-def-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        The ID of the examination script definition to which the non-MCQ belongs.
+                    </def>
+
+                </deflist>
+            </chapter>
+
+            <chapter title="Body parameters" id="create-def-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>question_no</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            The numeric question number of the question. For example, if the full
+                            question number is 10(a)(ii), then <code>question_no</code> should be
+                            set to <code>10</code>.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>question_name</code>: <code>string</code></title>
+                        <p>
+                            The explanatory name of the question.
+                        </p>
+                        <p>
+                            Example 1: For a question with the full question number
+                            10(a)(ii), <code>question_name</code> should be set to
+                            <code>"10(a)(ii)"</code>.
+                        </p>
+                        <p>
+                            Example 2: For the marking item "Contents" of Question 2 of
+                            English Language (II) - Writing, <code>question_name</code>
+                            should be set to <code>"2_Contents"</code>.
+                        </p>
+                        <p>
+                            Default: <code>""</code>
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>max_marks</code>: <code>integer</code> (<b>required</b>)</title>
+                        The maximum marks that can be awarded to this question.
+                    </def>
+
+                    <def>
+                        <title><code>allow_half_marks</code>: <code>bool</code></title>
+                        <p>
+                            Whether to allow markers to award marks in the unit of 0.5 marks.
+                        </p>
+                        <p>Default: <code>false</code></p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="create-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the created non-MC question definition. Sample response:</p>
+                <code-block lang="json">
+                    {
+                        "non_mcq_definition_id": 189493,
+                        "script_definition_id": 129,
+                        "question_no": 5,
+                        "question_name": "5(b)",
+                        "max_mark": 2,
+                        "allow_half_marks": false
+                    }
+                </code-block>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="general_422_response"/>
+        </chapter>
+    </chapter>
+
+</topic>
