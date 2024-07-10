@@ -11,4 +11,135 @@
             an MCQ's image location, options location, answers, etc.
         </p>
     </tldr>
+
+    <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
+
+    <chapter title="Create an MCQ definition" id="create-mcq">
+        <tldr>
+            <p><code>POST /v1/script_defs/{script_def_id}/question_defs/mcqs</code></p>
+            <p>Creates a new MCQ definition in an examination script.</p>
+        </tldr>
+
+        <tip>
+            To ensure consistency, MCQ definitions cannot be modified upon creation.
+            You must <a href="#delete-mcq">delete the MCQ definition</a> if you make a mistake.
+        </tip>
+
+        <chapter title="Request parameters" id="create-mcq-params">
+            <chapter title="Path parameters" id="create-mcq-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        The ID of the script definition.
+                    </def>
+
+                </deflist>
+            </chapter>
+
+            <chapter title="Body parameters" id="create-mcq-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>question_no</code>: <code>integer</code> (<b>required</b>)</title>
+                        The numeric question number of the MCQ. For example, if the question number is
+                        10(a)(ii), then the value of <code>question_no</code> should be <code>10</code>.
+                    </def>
+
+                    <def>
+                        <title><code>question_name</code>: <code>string</code></title>
+                        <p>
+                            The explanatory name of the question.
+                        </p>
+                        <p>
+                            <b>Suggested practice:</b> if the question number of the MCQ is 10(a)(ii),
+                            then this property should be set as <code>10(a)(ii)</code>.
+                        </p>
+                        <p>Default: <code>""</code></p>
+                    </def>
+
+                    <def>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        The ID of the marking panel that will be marking this question.
+                        The marking panel specified must be an MC marking panel.
+                    </def>
+
+                    <def>
+                        <title><code>question_range</code>: <code>image_margin</code> (<b>required</b>)</title>
+                        The location information about the question's image.
+                    </def>
+
+                    <def>
+                        <title><code>options_range</code>: <code>array&lt;option_definition&gt;</code> (<b>required</b>)</title>
+                        <p>An array of definitions of options of the MCQ.</p>
+                    </def>
+
+                    <def>
+                        <title><code>marking_mode</code>: <code>enum (int)</code> (<b>required</b>)</title>
+                        <p>The method used when marking the MCQ.</p>
+                        <deflist collapsible="true">
+                            <def>
+                                <title><code>0 - PenaltyOnIncorrect</code></title>
+                                <p>
+                                    Marks are awarded to correct and chosen options first.
+                                    For each incorrect and chosen option, marks are deducted,
+                                    until the total mark of the question is 0.
+                                </p>
+                                <p>
+                                    Example:
+                                </p>
+                                <p>
+                                    An MCQ has five options (A, B, C, D, and E),
+                                    with A and E being the correct option. Each correct option
+                                    carries 2 marks. Therefore, the question carries 4 marks in total.
+                                </p>
+                                <p>
+                                    Suppose a candidate chooses A, B, and E. 4 marks are first awarded
+                                    for the correctly chosen options A and E. Then 2 marks are deducted
+                                    for the incorrect option B. Therefore, the candidate is awarded a
+                                    total of 2 marks for the question (<code>2 + 2 - 2 = 2</code>).
+                                </p>
+                            </def>
+                            <def>
+                                <title><code>1 - GiveOnAllCorrect</code></title>
+                                <p>
+                                    Marks are only awarded when all correct options are chosen and
+                                    all incorrect options are not chosen.
+                                </p>
+                                <note>
+                                    <code>mark_per_option</code> is treated as the total mark of the
+                                    question when this mode is used, i.e., the candidate will be
+                                    awarded the marks stated in <code>mark_per_option</code> if
+                                    he/she correctly answers the question.
+                                </note>
+                            </def>
+                        </deflist>
+                    </def>
+
+                    <def>
+                        <title><code>mark_per_option</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            Marks given to the candidate per correctly-chosen option
+                            when <code>mark_per_option</code> is <code>0 (PenaltyOnIncorrect)</code>.
+                        </p>
+                        <p><b>-OR-</b></p>
+                        <p>
+                            Total marks given to the candidate when the question is correctly answered
+                            when <code>mark_per_option</code> is <code>1 (GiveOnAllCorrect)</code>.
+                        </p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="create-mcq-responses">
+
+        </chapter>
+    </chapter>
+
+    <chapter title="Delete an MCQ definition" id="delete-mcq">
+
+    </chapter>
+
 </topic>
