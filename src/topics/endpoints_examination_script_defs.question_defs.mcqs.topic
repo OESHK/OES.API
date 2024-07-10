@@ -75,45 +75,12 @@
                     </def>
 
                     <def>
-                        <title><code>marking_mode</code>: <code>enum (int)</code> (<b>required</b>)</title>
+                        <title>
+                            <a href="enums_ref.marking_mode.topic"><code>marking_mode</code></a>:
+                            <a href="enums_ref.topic"><code>enum (int)</code></a>
+                            (<b>required</b>)
+                        </title>
                         <p>The method used when marking the MCQ.</p>
-                        <deflist collapsible="true">
-                            <def>
-                                <title><code>0 - PenaltyOnIncorrect</code></title>
-                                <p>
-                                    Marks are awarded to correct and chosen options first.
-                                    For each incorrect and chosen option, marks are deducted,
-                                    until the total mark of the question is 0.
-                                </p>
-                                <p>
-                                    Example:
-                                </p>
-                                <p>
-                                    An MCQ has five options (A, B, C, D, and E),
-                                    with A and E being the correct option. Each correct option
-                                    carries 2 marks. Therefore, the question carries 4 marks in total.
-                                </p>
-                                <p>
-                                    Suppose a candidate chooses A, B, and E. 4 marks are first awarded
-                                    for the correctly chosen options A and E. Then 2 marks are deducted
-                                    for the incorrect option B. Therefore, the candidate is awarded a
-                                    total of 2 marks for the question (<code>2 + 2 - 2 = 2</code>).
-                                </p>
-                            </def>
-                            <def>
-                                <title><code>1 - GiveOnAllCorrect</code></title>
-                                <p>
-                                    Marks are only awarded when all correct options are chosen and
-                                    all incorrect options are not chosen.
-                                </p>
-                                <note>
-                                    <code>mark_per_option</code> is treated as the total mark of the
-                                    question when this mode is used, i.e., the candidate will be
-                                    awarded the marks stated in <code>mark_per_option</code> if
-                                    he/she correctly answers the question.
-                                </note>
-                            </def>
-                        </deflist>
                     </def>
 
                     <def>

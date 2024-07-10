@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="script_type" id="enums_ref.script_type">
+
+    <tldr>
+        Indicates the type of the examination script.
+    </tldr>
+
+    <table>
+        <tr>
+            <td>Value</td>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+
+        <tr id="v_0">
+            <td>0</td>
+            <td>MCSheet</td>
+            <td>
+                <p>
+                    A standard A4 size sheet on which candidates can mark their answers
+                    to multiple-choice questions.
+                </p>
+                <p>
+                    Modified/customised MC sheets may not be processed correctly as the
+                    location information may be different from that of the standard one.
+                    Use <code>2 - QuestionAnswerBook</code> and customise the image settings instead.
+                </p>
+            </td>
+        </tr>
+
+        <tr id="v_1">
+            <td>1</td>
+            <td>OralMarkSheet</td>
+            <td>
+                <p>
+                    A standard oral exam mark sheet. Used in English Language (IV).
+                </p>
+                <p>
+                    Customised mark sheets will not be recognised.
+                </p>
+            </td>
+        </tr>
+
+        <tr id="v_2">
+            <td>2</td>
+            <td>QuestionAnswerBook</td>
+            <td>
+                <p>
+                    A customised Question-Answer booklet.
+                </p>
+            </td>
+        </tr>
+
+        <tr id="v_3">
+            <td>3</td>
+            <td>AnswerBook</td>
+            <td>
+                <p>
+                    A standard answer book with pre-defined question-number boxes and margins.
+                    Usually used in examinations like Chemistry (II), Liberal Studies (II), etc.
+                </p>
+                <p>
+                    Modified/customised answer books may not be properly recognised.
+                </p>
+            </td>
+        </tr>
+    </table>
+</topic>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="marking_mode" id="enums_ref.marking_mode">
+
+    <tldr>
+        <p>
+            Controls how an MCQ is marked.
+        </p>
+    </tldr>
+
+    <table>
+        <tr>
+            <td>Value</td>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+
+        <tr id="v_0">
+            <td>0</td>
+            <td>PenaltyOnIncorrect</td>
+            <td>
+                <p>
+                    Marks are awarded to correct and chosen options first.
+                    For each incorrect and chosen option, marks are deducted,
+                    until the total mark of the question is 0.
+                </p>
+                <p>
+                    Example:
+                </p>
+                <p>
+                    An MCQ has five options (A, B, C, D, and E),
+                    with A and E being the correct option. Each correct option
+                    carries 2 marks. Therefore, the question carries 4 marks in total.
+                </p>
+                <p>
+                    Suppose a candidate chooses A, B, and E. 4 marks are first awarded
+                    for the correctly chosen options A and E. Then 2 marks are deducted
+                    for the incorrect option B. Therefore, the candidate is awarded a
+                    total of 2 marks for the question (<code>2 + 2 - 2 = 2</code>).
+                </p>
+            </td>
+        </tr>
+
+        <tr id="v_1">
+            <td>1</td>
+            <td>GiveOnAllCorrect</td>
+            <td>
+                <p>
+                    Marks are only awarded when all correct options are chosen and
+                    all incorrect options are not chosen.
+                </p>
+                <note>
+                    <code>mark_per_option</code> is treated as the total mark of the
+                    question when this mode is used, i.e., the candidate will be
+                    awarded the marks stated in <code>mark_per_option</code> if
+                    he/she correctly answers the question.
+                </note>
+            </td>
+        </tr>
+    </table>
+
+</topic>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="script_size" id="enums_ref.script_size">
+
+    <tldr>
+        Indicates the sheet size of an examination script.
+    </tldr>
+
+    <table>
+        <tr>
+            <td>Value</td>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+
+        <tr id="v_0">
+            <td>0</td>
+            <td>A3</td>
+            <td>-</td>
+        </tr>
+
+        <tr id="v_1">
+            <td>1</td>
+            <td>A4</td>
+            <td>-</td>
+        </tr>
+    </table>
+</topic>

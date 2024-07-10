@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Enums Reference" id="enums_ref">
+
+    <link-summary>
+        Usage and references of enums.
+    </link-summary>
+
+    <p>
+        When a parameter (typically a body parameter) of an endpoint takes an enum,
+        it will be explicitly specified in the documentation like this:
+    </p>
+    <deflist>
+        <def>
+            <title><code>script_type</code>: <code>enum (int)</code> (<b>required</b>)</title>
+            Type of the examination script.
+        </def>
+    </deflist>
+    <p>
+        Notice that <code>(int)</code> follows the parameter type <code>enum</code>,
+        indicating that you <b>must</b> use a value of type <code>integer</code> in your JSON payload.
+        For the example above, the value of the parameter should be given like this:
+    </p>
+    <code-block lang="json">
+        {
+            "script_type": 0
+        }
+    </code-block>
+    <p>
+        You can find the references of all enums that are used in the OES API endpoints in the subtopics.
+    </p>
+</topic>

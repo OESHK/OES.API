@@ -18,4 +18,9 @@
         </toc-element>
         <toc-element toc-title="Marking Panels" topic="endpoints_marking_panels.topic"/>
     </toc-element>
+    <toc-element topic="enums_ref.topic">
+        <toc-element topic="enums_ref.marking_mode.topic"/>
+        <toc-element topic="enums_ref.script_size.topic"/>
+        <toc-element topic="enums_ref.script_type.topic"/>
+    </toc-element>
 </instance-profile>

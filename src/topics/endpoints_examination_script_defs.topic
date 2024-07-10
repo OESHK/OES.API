@@ -41,42 +41,21 @@
                     </def>
 
                     <def>
-                        <title><code>script_type</code>: <code>enum (int)</code> (<b>required</b>)</title>
+                        <title>
+                            <a href="enums_ref.script_type.topic"><code>script_type</code></a>:
+                            <a href="enums_ref.topic"><code>enum (int)</code></a>
+                            (<b>required</b>)
+                        </title>
                         <p>Type of the script.</p>
-                        <deflist collapsible="true">
-                            <def>
-                                <title><code>0 - MCSheet</code></title>
-                                A computer-marked multiple-choice sheet.
-                            </def>
-                            <def>
-                                <title><code>1 - OralMarkSheet</code></title>
-                                A standard score sheet for oral examination.
-                                (Often used by English Language Paper IV.)
-                            </def>
-                            <def>
-                                <title><code>2 - QuestionAnswerBook</code></title>
-                                A customisable Question-Answer booklet.
-                            </def>
-                            <def>
-                                <title><code>3 - AnswerBook</code></title>
-                                A standard answer book with predefined slicing margins.
-                            </def>
-                        </deflist>
                     </def>
 
                     <def>
-                        <title><code>script_size</code>: <code>enum (int)</code> (<b>required</b>)</title>
+                        <title>
+                            <a href="enums_ref.script_size.topic"><code>script_size</code></a>:
+                            <a href="enums_ref.topic"><code>enum (int)</code></a>
+                            (<b>required</b>)
+                        </title>
                         Size of each sheet of the script.
-                        <deflist collapsible="true">
-                            <def>
-                                <title><code>0 - A3</code></title>
-                                The script is made of A3 size papers folded into an A4 booklet.
-                            </def>
-                            <def>
-                                <title><code>1 - A4</code></title>
-                                The script is an A4 booklet made of A4 size papers.
-                            </def>
-                        </deflist>
                     </def>
 
                     <def>
