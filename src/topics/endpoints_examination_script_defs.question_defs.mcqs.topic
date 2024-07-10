@@ -87,12 +87,12 @@
                         <title><code>mark_per_option</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>
                             Marks given to the candidate per correctly-chosen option
-                            when <code>mark_per_option</code> is <code>0 (PenaltyOnIncorrect)</code>.
+                            when <code>marking_mode</code> is <code>0 (PenaltyOnIncorrect)</code>.
                         </p>
                         <p><b>-OR-</b></p>
                         <p>
                             Total marks given to the candidate when the question is correctly answered
-                            when <code>mark_per_option</code> is <code>1 (GiveOnAllCorrect)</code>.
+                            when <code>marking_mode</code> is <code>1 (GiveOnAllCorrect)</code>.
                         </p>
                     </def>
 

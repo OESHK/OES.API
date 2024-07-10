@@ -53,10 +53,10 @@
                     all incorrect options are not chosen.
                 </p>
                 <note>
-                    <code>mark_per_option</code> is treated as the total mark of the
-                    question when this mode is used, i.e., the candidate will be
-                    awarded the marks stated in <code>mark_per_option</code> if
-                    he/she correctly answers the question.
+                    <code>mark_per_option</code> of an MCQ definition is treated
+                    as the total mark of the question when this mode is used,
+                    i.e., the candidate will be awarded the marks stated in
+                    <code>mark_per_option</code> if he/she correctly answers the question.
                 </note>
             </td>
         </tr>
