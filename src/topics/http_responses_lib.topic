@@ -13,6 +13,23 @@
         </procedure>
     </snippet>
 
+    <snippet id="404_response_invalid_modification">
+        <procedure collapsible="true">
+            <title><code>400 Bad Request</code></title>
+            <p>
+                This request is invalid as the <code>examination_status</code> of the
+                <code>examination</code> with which this object associates is not
+                <code>setup</code>.
+            </p>
+            <p>
+                Read more about
+                <a href="endpoints_examinations.topic#update-exam-status">
+                    examination status
+                </a>.
+            </p>
+        </procedure>
+    </snippet>
+
     <snippet id="general_403_response">
         <procedure collapsible="true">
             <title><code>403 Forbidden</code></title>

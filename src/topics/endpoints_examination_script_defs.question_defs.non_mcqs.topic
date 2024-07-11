@@ -22,14 +22,19 @@
             Creates a definition for a non-MC question.
         </tldr>
 
+        <tip>
+            A non-MCQ definition cannot be modified once created. Properties can only
+            be modified by deleting the entire definition and starting over.
+        </tip>
+
         <chapter title="Request parameters" id="create-def-params">
             <chapter title="Path parameters" id="create-def-params-path">
                 <deflist>
 
-                    <def>
+                    <snippet id="reuse-param--path-script-def-id"><def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         The ID of the examination script definition to which the non-MCQ belongs.
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -97,11 +102,46 @@
                         "allow_half_marks": false
                     }
                 </code-block>
+                <note>
+                    <code>non_mcq_definition_id</code> is automatically assigned upon creation.
+                </note>
             </procedure>
+            <include from="http_responses_lib.topic" element-id="404_response_invalid_modification"/>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
         </chapter>
+    </chapter>
+
+    <chapter title="Delete a non-MCQ definition" id="delete-def">
+        <tldr>
+            <p><code>DELETE /v1/script_defs/{script_def_id}/question_defs/non_mcqs/{non_mcq_def_id}</code></p>
+            <p>Deletes a specific non-MCQ definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="delete-def-params">
+            <chapter title="Path parameters" id="delete-def-params-path">
+                <deflist>
+
+                    <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
+
+                    <def>
+                        <title><code>non_mcq_def_id</code>: <code>integer</code>: (<b>required</b>)</title>
+                        The ID of the non-MCQ definition.
+                    </def>
+
+                </deflist>
+            </chapter>
+
+            <chapter title="Responses" id="delete-def-responses">
+                <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+                <include from="http_responses_lib.topic" element-id="404_response_invalid_modification"/>
+                <include from="http_responses_lib.topic" element-id="general_403_response"/>
+                <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            </chapter>
+        </chapter>
+
+
     </chapter>
 
 </topic>

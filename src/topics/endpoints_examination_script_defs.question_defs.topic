@@ -11,11 +11,19 @@
         different types of questions, including MCQs and Non-MCQs.</p>
     </tldr>
 
+    <note>
+        Creation/deletion of question definitions require the <code>examination_status</code>
+        of the examination to which the script definition belong be <code>setup</code>.
+        Otherwise, a <code>400 Bad Request</code> response will be generated.
+    </note>
+
     <p>
         Endpoints under path <code>script_defs/question_defs</code> are further divided into
         <a href="endpoints_examination_script_defs.question_defs.mcqs.topic"><code>mcqs</code></a>
         (for multiple-choice questions) and
-        <code>non-mcqs</code> (for non-multiple-choice questions).
+        <a href="endpoints_examination_script_defs.question_defs.non_mcqs.topic"><code>non-mcqs</code></a>
+        (for non-multiple-choice questions).
         Refer to respective documents for API references.
     </p>
+
 </topic>
