@@ -92,7 +92,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the created non-MC question definition. Sample response:</p>
-                <code-block lang="json">
+                <snippet id="reuse-code--non-mcq-def"><code-block lang="json">
                     {
                         "non_mcq_definition_id": 189493,
                         "script_definition_id": 129,
@@ -101,7 +101,7 @@
                         "max_mark": 2,
                         "allow_half_marks": false
                     }
-                </code-block>
+                </code-block></snippet>
                 <note>
                     <code>non_mcq_definition_id</code> is automatically assigned upon creation.
                 </note>
@@ -125,10 +125,10 @@
 
                     <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
 
-                    <def>
+                    <snippet id="reuse-param--path-non-mcq-def-id"><def>
                         <title><code>non_mcq_def_id</code>: <code>integer</code>: (<b>required</b>)</title>
                         The ID of the non-MCQ definition.
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -166,6 +166,35 @@
                     Returns the array of non-MCQ question definitions,
                     empty array if none defined.
                 </p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get a non-MCQ definition" id="get-def">
+        <tldr>
+            <p><code>GET /v1/script_defs/{script_def_id}/question_defs/non_mcqs/{non_mcq_def_id}</code></p>
+            <p>Gets a specific non-MCQ definition by its ID.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="get-def-params">
+            <chapter title="Path parameters" id="get-def-params-path">
+                <deflist>
+
+                    <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
+
+                    <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-non-mcq-def-id"/>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the retrieved non-MCQ definition. Sample response:</p>
+                <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-code--non-mcq-def"/>
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
