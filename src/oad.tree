@@ -12,10 +12,10 @@
         </toc-element>
         <toc-element topic="endpoints_examination_script_defs.topic">
             <toc-element toc-title="Question Definitions" topic="endpoints_examination_script_defs.question_defs.topic">
-                <toc-element topic="endpoints_examination_script_defs.question_defs.non_mcqs.topic"
-                             toc-title="Non-MC Questions"/>
                 <toc-element topic="endpoints_examination_script_defs.question_defs.mcqs.topic"
                              toc-title="MC Questions"/>
+                <toc-element toc-title="Non-MC Questions"
+                             topic="endpoints_examination_script_defs.question_defs.non_mcqs.topic"/>
             </toc-element>
         </toc-element>
         <toc-element toc-title="Marking Panels" topic="endpoints_marking_panels.topic"/>

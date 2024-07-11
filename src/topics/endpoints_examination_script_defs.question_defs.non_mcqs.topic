@@ -142,4 +142,34 @@
         </chapter>
     </chapter>
 
+    <chapter title="List all non-MCQ definitions" id="list-defs">
+        <tldr>
+            <p><code>GET /v1/script_defs/{script_def_id}/question_defs/non_mcqs</code></p>
+            <p>Lists all non-MCQ question definitions under a specific examination
+            script definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="list-defs-params">
+            <chapter title="Path parameters" id="list-defs-params-path">
+                <deflist>
+
+                    <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="list-defs-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>
+                    Returns the array of non-MCQ question definitions,
+                    empty array if none defined.
+                </p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
 </topic>
