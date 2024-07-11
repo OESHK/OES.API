@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="examination_status" id="enums_ref.examination_status">
+
+    <tldr>
+        <p>Indicates the status of an examination.</p>
+    </tldr>
+
+    <warning>
+        <p><b>Irreversible Operation</b></p>
+        <p>
+            <code>examination_status</code> is updated from <code>0</code> to
+            <code>1</code> by <a href="endpoints_examinations.topic#update-exam-status">
+            this endpoint</a>. It is a one-off, irreversible action.
+        </p>
+    </warning>
+
+    <table>
+        <tr>
+            <td>Value</td>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+
+        <tr id="v_0">
+            <td>0</td>
+            <td>Setup</td>
+            <td>
+                <p>
+                    The examination is in preparation stage. Candidates enrollment &amp;
+                    answer script uploading is impossible at this stage.
+                </p>
+                <p>
+                    Assets that belongs to the examination can be created/modified/deleted
+                    at this stage. (Assets include script definition , question definitions etc.)
+                </p>
+            </td>
+        </tr>
+
+        <tr id="v_1">
+            <td>1</td>
+            <td>Open</td>
+            <td>
+                <p>
+                    The examination preparation has completed.
+                    Candidates can now be enrolled into the examination.
+                    Answer script images can now be uploaded to the system.
+                </p>
+                <p>
+                    Modification of assets is not possible at this status.
+                </p>
+            </td>
+        </tr>
+    </table>
+</topic>

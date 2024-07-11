@@ -307,7 +307,7 @@
     <chapter title="Update examination status" id="update-exam-status">
         <tldr>
             <p><code>POST /v1/examinations/{exam_id}/open</code></p>
-            <p>Turns the <code>examination_status</code> of the specified examination from <code>0 (setup)</code> to <code>1 (open)</code>.</p>
+            <p>Turns the <a href="enums_ref.examination_status.topic"><code>examination_status</code></a> of the specified examination from <code>0 (setup)</code> to <code>1 (open)</code>.</p>
         </tldr>
 
         <p>An examination is marked as <code>setup</code> at creation to indicate that it is currently being set up.
