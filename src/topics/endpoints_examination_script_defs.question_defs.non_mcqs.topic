@@ -157,6 +157,16 @@
 
                 </deflist>
             </chapter>
+            <chapter title="Query parameters" id="list-defs-params-query">
+                <deflist>
+
+                    <def>
+                        <title><code>question_no</code>: <code>integer</code></title>
+                        Gets only non-MCQ definitions of this <code>question_no</code>.
+                    </def>
+
+                </deflist>
+            </chapter>
         </chapter>
 
         <chapter title="Responses" id="list-defs-responses">
