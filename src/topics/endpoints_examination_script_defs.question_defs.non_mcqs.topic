@@ -126,7 +126,7 @@
                     <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
 
                     <snippet id="reuse-param--path-non-mcq-def-id"><def>
-                        <title><code>non_mcq_def_id</code>: <code>integer</code>: (<b>required</b>)</title>
+                        <title><code>non_mcq_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         The ID of the non-MCQ definition.
                     </def></snippet>
 
