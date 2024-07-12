@@ -110,4 +110,30 @@
         </chapter>
     </chapter>
 
+    <chapter title="Delete a question number box" id="delete-def">
+        <tldr>
+            <p><code>DELETE /v1/qnb_defs/{qnb_def_id}</code></p>
+            <p>Deletes a question number box definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="delete-def-params">
+            <chapter title="Path parameters" id="delete-def-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>qnb_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the question no. box definition.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="delete-def-responses">
+            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
 </topic>
