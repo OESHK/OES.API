@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="REST API endpoint for question no. box definitions" id="endpoints_qnb_definitions">
+
+    <tldr>
+        <p>
+            Use <code>qnb_defs</code> endpoints to create, modify, or delete question number
+            box definitions.
+        </p>
+    </tldr>
+
+    <p>
+        Question number boxes look like the one in the following image:
+    </p>
+    <img src="question_number_box.png" alt="Image of question number box."/>
+    <p>
+        When uploading scanned answer scripts, the system attempts to recognise the option
+        that the candidate has chosen and assign the image slice(s) to the corresponding
+        marking panel.
+    </p>
+    <p>
+        Question number box definitions contain information about where the question number box
+        is, the valid range of questions from which candidates can choose (sometimes only a few
+        options are valid), etc. Unlike examination script definitions, question number box
+        definitions can be reused across examinations.
+    </p>
+
+    <chapter title="Create a question number box definition" id="create-def">
+        <tldr>
+            <p><code>POST /v1/qnb_defs</code></p>
+            <p>Creates a new question no. box definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="create-def-params">
+            <chapter title="Body parameters" id="create-def-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>qnb_image_margin</code>: <code>image_margin</code> (<b>required</b>)</title>
+                        <p>
+                            The information about where the image of the question no. box is.
+                            In the example below, the value should be <code>"6,12.66,43.9,78.92"</code>
+                        </p>
+                        <img src="question_number_box_margins.png"
+                             alt="Image of a question number box with margins annotated."/>
+                    </def>
+
+                    <def>
+                        <title><code>valid_questions_range</code>: <code>array&lt;integer&gt;</code> (<b>required</b>)</title>
+                        <p>
+                            The array of question numbers that are available to be chosen from by
+                            candidates. For example, in English Language (II) - Writing examination,
+                            only Q.2 - Q.5 can be chosen, the value should be set to
+                            <code>[2, 3, 4, 5]</code>.
+                        </p>
+                        <p><b>Put <code>0</code> for any numbers larger than 25.</b></p>
+                    </def>
+
+                    <def>
+                        <title><code>questions_margin</code>: <code>dict&lt;string, image_margin&gt;</code> (<b>required</b>)</title>
+                        <p>
+                            The image margin of the box of each question in the question number box.
+                            The key should be one of the questions in the
+                            <code>valid_question_range</code>. All questions in the range must have
+                            a matching image margin defined in this parameter.
+                        </p>
+                        <p>
+                            The image margin of a question's box should be relative to the parent
+                            question number box, not the entire page. See the following example:
+                        </p>
+                        <img src="question_number_box_question_margins.png"
+                             alt="An example showing the correct margins of a question box."/>
+                    </def>
+
+                    <def>
+                        <title><code>box_name</code>: <code>string</code></title>
+                        <p>
+                            A descriptive name for the question no. box definition.
+                            This can be useful when reusing definitions across different examinations.
+                        </p>
+                        <p>Default: <code>""</code></p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="create-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the created question no. box definition. Sample response:</p>
+                <code-block lang="json">
+                    {
+                        "qnb_definition_id": 2839,
+                        "qnb_image_margin": "6,12.66,43.9,78.92",
+                        "valid_questions_range": [1, 2],
+                        "questions_margin": {
+                            "1": "2.2,15.89,95,78",
+                            "2": "5.5,15.89,85,78"
+                        },
+                        "box_name": ""
+                    }
+                </code-block>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_422_response"/>
+        </chapter>
+    </chapter>
+
+</topic>
