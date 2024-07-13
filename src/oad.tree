@@ -27,4 +27,5 @@
         <toc-element topic="enums_ref.script_size.topic"/>
         <toc-element topic="enums_ref.script_type.topic"/>
     </toc-element>
+    <toc-element topic="types_ref.topic"/>
 </instance-profile>

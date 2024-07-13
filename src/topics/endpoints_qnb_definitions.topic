@@ -39,7 +39,10 @@
                 <deflist>
 
                     <def>
-                        <title><code>qnb_image_margin</code>: <code>image_margin</code> (<b>required</b>)</title>
+                        <title><code>qnb_image_margin</code>:
+                            <code><a href="types_ref.topic#t--image-margin">image_margin</a>
+                                (string)</code>
+                            (<b>required</b>)</title>
                         <p>
                             The information about where the image of the question no. box is.
                             In the example below, the value should be <code>"6,12.66,43.9,78.92"</code>
@@ -60,7 +63,9 @@
                     </def>
 
                     <def>
-                        <title><code>questions_margin</code>: <code>dict&lt;string, image_margin&gt;</code> (<b>required</b>)</title>
+                        <title><code>questions_margin</code>: <code>dict&lt;string,
+                            <a href="types_ref.topic#t--image-margin">image_margin</a>&gt;</code>
+                            (<b>required</b>)</title>
                         <p>
                             The image margin of the box of each question in the question number box.
                             The key should be one of the questions in the
@@ -222,7 +227,7 @@
                 <deflist>
 
                     <def>
-                        <title><code>qnb_image_margin</code>: <code>image_margin</code></title>
+                        <title><code>qnb_image_margin</code>: <code><a href="types_ref.topic#t--image-margin">image_margin</a> (string)</code></title>
                         <p>
                             The information about where the image of the question no. box is.
                         </p>
@@ -238,7 +243,9 @@
                     </def>
 
                     <def>
-                        <title><code>questions_margin</code>: <code>dict&lt;string, image_margin&gt;</code></title>
+                        <title><code>questions_margin</code>: <code>dict&lt;string,
+                            <a href="types_ref.topic#t--image-margin">image_margin</a>&gt;</code>
+                        </title>
                         <p>
                             The image margin of the box of each question in the question number box.
                             The key should be one of the questions in the

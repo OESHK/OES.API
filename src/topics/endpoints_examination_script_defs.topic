@@ -73,7 +73,9 @@
                     </def>
 
                     <def>
-                        <title><code>script_barcode_range</code>: <code>image_margin (string)</code> (<b>required</b>)</title>
+                        <title><code>script_barcode_range</code>:
+                            <code><a href="types_ref.topic#t--image-margin">image_margin</a> (string)</code>
+                            (<b>required</b>)</title>
                         Location information about where to find the barcode.
                     </def>
 
@@ -84,7 +86,9 @@
                         <p>
                             The object is of type <code>dict</code>,
                             with the key being the page number in <code>string</code>
-                            and value being an <code>image_margin</code> in <code>string</code>.
+                            and value being an
+                            <code><a href="types_ref.topic#t--image-margin">image_margin</a></code>
+                            in <code>string</code>.
                             Example:
                         </p>
                         <code-block lang="json">

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Types Reference" id="types_ref">
+
+    <link-summary>
+        References for custom types of OES API.
+    </link-summary>
+
+    <p>
+        The OES REST API uses some customised types to store and handle data.
+        You can find information about the usage of these types and their syntax transmitted in JSON.
+    </p>
+
+    <chapter id="t--image-margin">
+        <title><code>image_margin</code> (<code>string</code>)</title>
+        <tldr>
+            <p>
+                Describes the relative position of an object relative to its parent image.
+            </p>
+        </tldr>
+
+        <chapter title="Syntax">
+            <code-block>
+                Left,Top,Right,Bottom
+            </code-block>
+            <p>
+                There are four components in an <code>image_margin</code>: the left, top,
+                right, bottom margins of the object relative to its parent image. The four
+                components are measured in percentage relative to the parent's height and
+                width, rounded to a maximum of 2 decimal places.
+            </p>
+            <p><b>
+                The values of the components do not include the percentage sign (%) and
+                are separated by commas (,) with no spaces.</b></p>
+            <p>
+                For example, the question number box in the following image positioned at
+                1.26 cm from the left of its parent' (the image of the page) margin, 3.76 cm
+                from the top, 9.22 cm from the right, and 23.44 cm from the bottom. The page
+                (A4 size) itself is 21 cm in width and 29.7 cm in height. The left and right
+                margins are 6% and 43.9% of the parent's width respectively, and the top and
+                bottom 12.66% and 78.92% the height respectively.
+            </p>
+            <img src="question_number_box_margins.png" alt="Positions of a question number box."/>
+            <p>
+                To describe the question number box's position relative to the page, an
+                <code>image_margin</code> is used. It is written as:
+            </p>
+            <code-block>
+                6,12.66,43.9,78.92
+                |   |    |     |
+                |   |    |     bottom
+                |   |    right
+                |   top
+                left
+            </code-block>
+        </chapter>
+    </chapter>
+</topic>

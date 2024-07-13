@@ -65,7 +65,9 @@
                     </def>
 
                     <def>
-                        <title><code>question_range</code>: <code>image_margin</code> (<b>required</b>)</title>
+                        <title><code>question_range</code>:
+                            <code><a href="types_ref.topic#t--image-margin">image_margin</a></code>
+                            (<b>required</b>)</title>
                         The location information about the question's image.
                     </def>
 
