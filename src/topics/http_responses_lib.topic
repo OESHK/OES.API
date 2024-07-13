@@ -13,6 +13,15 @@
         </procedure>
     </snippet>
 
+    <snippet id="400-exam-not-at-setup">
+        <procedure collapsible="true">
+            <title><code>400 Bad Request</code></title>
+            <p>
+                The associated examination's <code><a href="enums_ref.examination_status.topic"/> </code> is not <code>Setup</code>.
+            </p>
+        </procedure>
+    </snippet>
+
     <snippet id="404_response_invalid_modification">
         <procedure collapsible="true">
             <title><code>400 Bad Request</code></title>

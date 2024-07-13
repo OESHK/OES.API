@@ -24,10 +24,10 @@
             <chapter title="Path parameters" id="create-def-params-path">
                 <deflist>
 
-                    <def>
+                    <snippet id="reuse-param--path-script-def-id"><def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         The ID of the examination script definition to which the MC sheet definitions belongs.
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -92,6 +92,36 @@
                 <p>The <code>script_def_id</code> does not match any examination script definition.</p>
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Delete an MC sheet definition" id="delete-def">
+        <tldr>
+            <p><code>DELETE /v1/script_defs/{script_def_id}/mc_sheet_defs/{mc_sheet_def_id}</code></p>
+            <p>Deletes an existing MC sheet definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="delete-def-params">
+            <chapter title="Path parameters" id="delete-def-params-path">
+                <deflist>
+
+                    <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                             element-id="reuse-param--path-script-def-id"/>
+
+                    <def>
+                        <title><code>mc_sheet_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the MC sheet definition.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="delete-def-responses">
+            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>
     </chapter>
 
