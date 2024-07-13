@@ -20,13 +20,30 @@
             Creates a new MC sheet definition.
         </tldr>
 
+        <tip>
+            <p>
+                MC sheet definitions cannot be modified upon creation. Ensure that all
+                settings are correct before submitting a request. Deletion is necessary
+                for modification.
+            </p>
+        </tip>
+
         <chapter title="Request parameters" id="create-def-params">
             <chapter title="Path parameters" id="create-def-params-path">
                 <deflist>
 
                     <snippet id="reuse-param--path-script-def-id"><def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
-                        The ID of the examination script definition to which the MC sheet definitions belongs.
+                        <p>
+                            The ID of the examination script definition to which the MC sheet
+                            definitions belongs.
+                        </p>
+                        <p>
+                            The script definition's
+                            <a href="enums_ref.script_type.topic"/> must be <code>MCSheet</code>.
+                            Only one MC sheet definition can be created under the same examination
+                            script definition.
+                        </p>
                     </def></snippet>
 
                 </deflist>
@@ -83,6 +100,11 @@
                 </p>
                 <p><b>-OR-</b></p>
                 <p>
+                    The <a href="enums_ref.script_type.topic"/> of the script definition
+                    specified is not <code>MCSheet.</code>
+                </p>
+                <p><b>-OR-</b></p>
+                <p>
                     The associated examination's <code><a href="enums_ref.examination_status.topic"/> </code> is not <code>Setup</code>.
                 </p>
             </procedure>
@@ -90,6 +112,13 @@
             <procedure collapsible="true">
                 <title><code>404 Not Found</code></title>
                 <p>The <code>script_def_id</code> does not match any examination script definition.</p>
+            </procedure>
+            <procedure collapsible="true">
+                <title><code>409 Conflict</code></title>
+                <p>
+                    Another MC sheet definition already exists under the examination script
+                    specified.
+                </p>
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
         </chapter>
@@ -101,12 +130,25 @@
             <p>Deletes an existing MC sheet definition.</p>
         </tldr>
 
+        <warning>
+            <p>
+                Deletion of MC sheet definitions is cascaded to the associated answer script
+                images, marking records, etc. This action is irreversible.
+            </p>
+        </warning>
+
         <chapter title="Request parameters" id="delete-def-params">
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
-                             element-id="reuse-param--path-script-def-id"/>
+                    <def>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            The ID of the marking panel that will be marking this MC sheet. Must be
+                            an MC-panel (i.e. <code>is_mc_panel</code> of the panel set to
+                            <code>true</code>).
+                        </p>
+                    </def>
 
                     <def>
                         <title><code>mc_sheet_def_id</code>: <code>integer</code> (<b>required</b>)</title>
