@@ -116,6 +116,19 @@
             <p>Deletes a question number box definition.</p>
         </tldr>
 
+        <warning>
+            <p>
+                Any script slicing definitions using the question number box definition
+                that you are attempting to delete will still remain in the database after
+                deletion of the question number box definition. However, attempt to
+                slice answer scripts may fail as the associated question number box definition
+                has been deleted.
+            </p>
+            <p>
+                Deletion of question number box definitions should be avoided unless necessary.
+            </p>
+        </warning>
+
         <chapter title="Request parameters" id="delete-def-params">
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
