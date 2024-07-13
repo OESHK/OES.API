@@ -14,4 +14,18 @@
         </tip>
     </snippet>
 
+    <snippet id="query-params-pagination">
+        <def>
+            <title><code>page</code>: <code>integer</code></title>
+            <p>The page number of results to fetch.</p>
+            <p>Default: <code>1</code></p>
+        </def>
+
+        <def>
+            <title><code>per_page</code>: <code>integer</code></title>
+            <p>The number of results per page. Set to <code>0</code> for populating all results.</p>
+            <p>Default: <code>%default_per_page%</code></p>
+        </def>
+    </snippet>
+
 </topic>

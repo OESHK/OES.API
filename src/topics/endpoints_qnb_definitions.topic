@@ -92,7 +92,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the created question no. box definition. Sample response:</p>
-                <code-block lang="json">
+                <snippet id="reuse-code--qnb-def"><code-block lang="json">
                     {
                         "qnb_definition_id": 2839,
                         "qnb_image_margin": "6,12.66,43.9,78.92",
@@ -103,7 +103,7 @@
                         },
                         "box_name": ""
                     }
-                </code-block>
+                </code-block></snippet>
             </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
@@ -131,6 +131,63 @@
 
         <chapter title="Responses" id="delete-def-responses">
             <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get a list of question number box definitions" id="list-defs">
+        <tldr>
+            <p><code>GET /v1/qnb_defs</code></p>
+            <p>Gets a list of question number box definitions.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="list-defs-params">
+            <chapter title="Query parameters" id="list-defs-params-query">
+                <deflist>
+
+                    <include from="api_endpoints_reusable.topic" element-id="query-params-pagination">
+                        <var name="default_per_page">30</var>
+                    </include>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="list-defs-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the list of retrieved question no. box definitions.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get a question number box definition" id="get-def">
+        <tldr>
+            <p><code>GET /v1/qnb_defs/{qnb_def_id}</code></p>
+            <p>Gets a specific question number box definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="get-def-params">
+            <chapter title="Path parameters" id="get-def-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>qnb_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the question number box definition.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the specified question number box definition. Sample response:</p>
+                <include from="endpoints_qnb_definitions.topic" element-id="reuse-code--qnb-def"/>
+            </procedure>
             <include from="http_responses_lib.topic" element-id="general_403_response"/>
             <include from="http_responses_lib.topic" element-id="general_404_response"/>
         </chapter>

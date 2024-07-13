@@ -28,17 +28,9 @@
             <chapter title="Query parameters" id="list-all-exams-params-query">
                 <deflist>
 
-                    <def>
-                        <title><code>page</code>: <code>integer</code></title>
-                        <p>The page number of results to fetch.</p>
-                        <p>Default: <code>1</code></p>
-                    </def>
-
-                    <def>
-                        <title><code>per_page</code>: <code>integer</code></title>
-                        <p>The number of results per page. Set to <code>0</code> for populating all results.</p>
-                        <p>Default: <code>30</code></p>
-                    </def>
+                    <include from="api_endpoints_reusable.topic" element-id="query-params-pagination">
+                        <var name="default_per_page">30</var>
+                    </include>
 
                 </deflist>
             </chapter>
