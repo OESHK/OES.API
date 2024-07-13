@@ -7,7 +7,7 @@
 
     <tldr>
         <p>
-            Use <code>script_defs/mc_sheet_defs</code> endpoint to access multiple-choice
+            Use <code>script_defs/mc_sheet_def</code> endpoint to access multiple-choice
             answer sheet definitions.
         </p>
     </tldr>
@@ -16,7 +16,7 @@
 
     <chapter title="Create an MC sheet definition" id="create-def">
         <tldr>
-            <p><code>POST /v1/script_defs/{script_def_id}/mc_sheet_defs</code></p>
+            <p><code>POST /v1/script_defs/{script_def_id}/mc_sheet_def</code></p>
             Creates a new MC sheet definition.
         </tldr>
 
@@ -32,7 +32,7 @@
             <chapter title="Path parameters" id="create-def-params-path">
                 <deflist>
 
-                    <snippet id="reuse-param--path-script-def-id"><def>
+                    <def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>
                             The ID of the examination script definition to which the MC sheet
@@ -44,7 +44,7 @@
                             Only one MC sheet definition can be created under the same examination
                             script definition.
                         </p>
-                    </def></snippet>
+                    </def>
 
                 </deflist>
             </chapter>
@@ -83,14 +83,18 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the created MC sheet definition. Sample response:</p>
-                <code-block lang="json">
+                <snippet id="reuse-code--mc-sheet-def"><code-block lang="json">
                     {
                         "mc_sheet_id": 23,
                         "script_definition_id": 293,
                         "panel_id": 3824,
                         "answers": "ABCDBD......D..(omitted)"
                     }
-                </code-block>
+                </code-block></snippet>
+                <note>
+                    <code>mc_sheet_definition_id</code> is automatically assigned upon
+                    successful creation.
+                </note>
             </procedure>
             <procedure collapsible="true">
                 <title><code>400 Bad Request</code></title>
@@ -101,7 +105,7 @@
                 <p><b>-OR-</b></p>
                 <p>
                     The <a href="enums_ref.script_type.topic"/> of the script definition
-                    specified is not <code>MCSheet.</code>
+                    specified is not <code>MCSheet</code>.
                 </p>
                 <p><b>-OR-</b></p>
                 <p>
@@ -126,7 +130,7 @@
 
     <chapter title="Delete an MC sheet definition" id="delete-def">
         <tldr>
-            <p><code>DELETE /v1/script_defs/{script_def_id}/mc_sheet_defs/{mc_sheet_def_id}</code></p>
+            <p><code>DELETE /v1/script_defs/{script_def_id}/mc_sheet_def</code></p>
             <p>Deletes an existing MC sheet definition.</p>
         </tldr>
 
@@ -141,19 +145,13 @@
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
 
-                    <def>
-                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
+                    <snippet id="reuse-param--path-script-def-id"><def>
+                        <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>
-                            The ID of the marking panel that will be marking this MC sheet. Must be
-                            an MC-panel (i.e. <code>is_mc_panel</code> of the panel set to
-                            <code>true</code>).
+                            The ID of the examination script definition to which the MC sheet
+                            definitions belongs.
                         </p>
-                    </def>
-
-                    <def>
-                        <title><code>mc_sheet_def_id</code>: <code>integer</code> (<b>required</b>)</title>
-                        <p>The ID of the MC sheet definition.</p>
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -163,7 +161,50 @@
             <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
             <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
             <include from="http_responses_lib.topic" element-id="403-general"/>
-            <include from="http_responses_lib.topic" element-id="404-general"/>
+            <snippet id="reuse-response--404-no-mc-sheet-defined"><procedure collapsible="true">
+                <title><code>404 Not Found</code></title>
+                <p>
+                    The specified examination script definition does not have an MC sheet
+                    definition created.
+                </p>
+            </procedure></snippet>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get the MC sheet definition" id="get-def">
+        <tldr>
+            <p><code>GET /v1/script_defs/{script_def_id}/mc_sheet_def</code></p>
+            <p>Gets the MC sheet definition defined under the examination script definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="get-def-params">
+            <chapter title="Path parameters" id="get-def-params-path">
+                <deflist>
+
+                    <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                             element-id="reuse-param--path-script-def-id"/>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the retrieved MC sheet definition. Sample response:</p>
+                <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                         element-id="reuse-code--mc-sheet-def"/>
+            </procedure>
+            <procedure collapsible="true">
+                <title><code>400 Bad Request</code></title>
+                <p>
+                    The specified examination script definition's
+                    <a href="enums_ref.script_type.topic"/> is not <code>MCSheet</code>.
+                </p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                     element-id="reuse-response--404-no-mc-sheet-defined"/>
         </chapter>
     </chapter>
 
