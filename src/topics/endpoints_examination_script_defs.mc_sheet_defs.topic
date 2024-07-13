@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       id="endpoints_examination_script_defs.mc_sheet_defs" title="REST API endpoints for MC sheet definitions">
+
+    <tldr>
+        <p>
+            Use <code>script_defs/mc_sheet_defs</code> endpoint to access multiple-choice
+            answer sheet definitions.
+        </p>
+    </tldr>
+
+    <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
+
+    <chapter title="Create an MC sheet definition" id="create-def">
+        <tldr>
+            <p><code>POST /v1/script_defs/{script_def_id}/mc_sheet_defs</code></p>
+            Creates a new MC sheet definition.
+        </tldr>
+
+        <chapter title="Request parameters" id="create-def-params">
+            <chapter title="Path parameters" id="create-def-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        The ID of the examination script definition to which the MC sheet definitions belongs.
+                    </def>
+
+                </deflist>
+            </chapter>
+
+            <chapter title="Body parameter" id="create-def-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            The ID of the marking panel that will be marking this MC sheet. Must be
+                            an MC-panel (i.e. <code>is_mc_panel</code> of the panel set to
+                            <code>true</code>).
+                        </p>
+                        <p>
+                            The marking panel must be under the same examination as that of
+                            this MC sheet definition's parent examination script definition.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title>
+                            <code>answers</code>:
+                            <code><a href="types_ref.topic#t--mc-sheet-ans">mc_sheet_ans</a>
+                            (string)</code>
+                            (<b>required</b>)
+                        </title>
+                        The answers of the MC sheet.
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="create-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the created MC sheet definition. Sample response:</p>
+                <code-block lang="json">
+                    {
+                        "mc_sheet_id": 23,
+                        "script_definition_id": 293,
+                        "panel_id": 3824,
+                        "answers": "ABCDBD......D..(omitted)"
+                    }
+                </code-block>
+            </procedure>
+            <procedure collapsible="true">
+                <title><code>400 Bad Request</code></title>
+                <p>
+                    The marking panel specified is not under the same examination as the
+                    examination script definition specified.
+                </p>
+                <p><b>-OR-</b></p>
+                <p>
+                    The associated examination's <code><a href="enums_ref.examination_status.topic"/> </code> is not <code>Setup</code>.
+                </p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <procedure collapsible="true">
+                <title><code>404 Not Found</code></title>
+                <p>The <code>script_def_id</code> does not match any examination script definition.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="general_422_response"/>
+        </chapter>
+    </chapter>
+
+</topic>
