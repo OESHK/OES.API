@@ -26,6 +26,9 @@
             <code-block>
                 Left,Top,Right,Bottom
             </code-block>
+        </chapter>
+
+        <chapter title="Usage">
             <p>
                 There are four components in an <code>image_margin</code>: the left, top,
                 right, bottom margins of the object relative to its parent image. The four
@@ -56,6 +59,51 @@
                 |   top
                 left
             </code-block>
+        </chapter>
+    </chapter>
+
+    <chapter id="t--mc-sheet-ans">
+        <title><code>mc_sheet_ans</code> (<code>string</code>)</title>
+
+        <tldr>
+            Defines the correct answers on an multiple-choice OMR sheet.
+        </tldr>
+
+        <chapter title="Syntax">
+            <code-block>
+                Q1Q2Q3Q4...Q98Q99Q100
+            </code-block>
+            <p>
+                The value of this type must be exactly 100 characters long.
+                Each character represents the answer to one question, from question 1 to
+                question 100. Answers can either be any of <code>A</code>, <code>B</code>,
+                <code>C</code>, or <code>D</code>. Questions that will not be processed
+                are represented with a dot (<code>.</code>).
+            </p>
+        </chapter>
+
+        <chapter title="Usage">
+            <p>
+                For example, if you would like to set the answers of an MC sheet to be:
+            </p>
+            <code-block>
+                001-005 A B C D D
+                006-010 B D C B A
+                011-015 C C B C A
+                016-100 (not processed)
+            </code-block>
+            <p>
+                Your <code>mc_sheet_ans</code> should be:
+            </p>
+            <code-block>
+                ABCDDBDCBACCBCA.....................................................................................
+            </code-block>
+            <p>
+                The string above has 100 characters in total, representing question 1 to 100 on
+                an MC sheet. Candidates' scripts will be recognised and checked against this
+                value. Questions 16 to 100 are ignored even if the candidate chosen any options
+                as they are marked as (<code>.</code>), meaning to skip.
+            </p>
         </chapter>
     </chapter>
 </topic>
