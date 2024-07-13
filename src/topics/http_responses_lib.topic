@@ -5,7 +5,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        id="http_responses_lib" is-library="true" title="HttpResponsesLibrary">
 
-    <snippet id="general_204_response_expanded">
+    <snippet id="204-general--expanded">
         <procedure collapsible="true" default-state="expanded">
             <title><code>204 No Content</code></title>
             <p>The request was accepted and processed successfully.
@@ -22,31 +22,14 @@
         </procedure>
     </snippet>
 
-    <snippet id="404_response_invalid_modification">
-        <procedure collapsible="true">
-            <title><code>400 Bad Request</code></title>
-            <p>
-                This request is invalid as the <code>examination_status</code> of the
-                <code>examination</code> with which this object associates is not
-                <code>setup</code>.
-            </p>
-            <p>
-                Read more about
-                <a href="endpoints_examinations.topic#update-exam-status">
-                    examination status
-                </a>.
-            </p>
-        </procedure>
-    </snippet>
-
-    <snippet id="general_403_response">
+    <snippet id="403-general">
         <procedure collapsible="true">
             <title><code>403 Forbidden</code></title>
             <p>The request is forbidden under the provided credentials.</p>
         </procedure>
     </snippet>
 
-    <snippet id="general_404_response">
+    <snippet id="404-general">
         <procedure collapsible="true">
             <title><code>404 Not Found</code></title>
             <p>The requested resource could not be found.</p>

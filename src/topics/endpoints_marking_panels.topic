@@ -110,7 +110,7 @@
                     </p>
                 </note>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
         </chapter>
 
@@ -142,8 +142,8 @@
                 <p>Returns an array of marking panels for the examination.</p>
                 <p><b>Note:</b> If no marking panels are linked to the examination, an empty array is returned instead of a <code>404</code> response.</p>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
 
     </chapter>
@@ -184,8 +184,8 @@
                 <p>Sample response:</p>
                 <include from="endpoints_marking_panels.topic" element-id="sample-code--marking-panel"/>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 
@@ -215,8 +215,8 @@
                 <p>Returns the requested marking panel. Sample response:</p>
                 <include from="endpoints_marking_panels.topic" element-id="sample-code--marking-panel"/>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
 
     </chapter>
@@ -302,8 +302,8 @@
                 <title><code>200 OK</code></title>
                 <p>The marking panel has been updated. The updated panel is returned.</p>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 
@@ -333,9 +333,9 @@
         </chapter>
 
         <chapter title="Responses" id="delete-panel-responses">
-            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 

@@ -106,9 +106,9 @@
                     <code>non_mcq_definition_id</code> is automatically assigned upon creation.
                 </note>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="404_response_invalid_modification"/>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
         </chapter>
     </chapter>
@@ -135,10 +135,10 @@
         </chapter>
 
         <chapter title="Responses" id="delete-def-responses">
-            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
-            <include from="http_responses_lib.topic" element-id="404_response_invalid_modification"/>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
+            <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 
@@ -177,8 +177,8 @@
                     empty array if none defined.
                 </p>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 
@@ -206,8 +206,8 @@
                 <p>Returns the retrieved non-MCQ definition. Sample response:</p>
                 <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-code--non-mcq-def"/>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 

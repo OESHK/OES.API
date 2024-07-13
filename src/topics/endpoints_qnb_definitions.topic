@@ -110,7 +110,7 @@
                     }
                 </code-block></snippet>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
         </chapter>
     </chapter>
@@ -148,9 +148,9 @@
         </chapter>
 
         <chapter title="Responses" id="delete-def-responses">
-            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 
@@ -177,7 +177,7 @@
                 <title><code>200 OK</code></title>
                 <p>Returns the list of retrieved question no. box definitions.</p>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
         </chapter>
     </chapter>
 
@@ -206,8 +206,8 @@
                 <p>Returns the specified question number box definition. Sample response:</p>
                 <include from="endpoints_qnb_definitions.topic" element-id="reuse-code--qnb-def"/>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 
@@ -271,8 +271,8 @@
                 <title><code>200 OK</code></title>
                 <p>Returns the updated question number box definition.</p>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
             <include from="http_responses_lib.topic" element-id="general_422_response"/>
         </chapter>
     </chapter>

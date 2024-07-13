@@ -85,7 +85,7 @@
                     </code-block>
                 </snippet>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
             <procedure collapsible="true">
                 <title><code>404 Not Found</code></title>
                 <p>The specified <code>exam-id</code> matches no record.</p>
@@ -147,7 +147,7 @@
                 <title><code>400 Bad Request</code></title>
                 <p>The candidate has already been enrolled in the specified examination.</p>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
             <procedure collapsible="true">
                 <title><code>404 Not Found</code></title>
                 <p>Either the candidate ID or the examination ID provided does not exist.</p>
@@ -197,8 +197,8 @@
                 <p>Returns the modified entry. Sample response:</p>
                 <include from="endpoints_examinations.candidates_entries.topic" element-id="sample-code--candidate-entry"/>
             </procedure>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 
@@ -224,9 +224,9 @@
         </chapter>
 
         <chapter title="Responses" id="delete-entry-responses">
-            <include from="http_responses_lib.topic" element-id="general_204_response_expanded"/>
-            <include from="http_responses_lib.topic" element-id="general_403_response"/>
-            <include from="http_responses_lib.topic" element-id="general_404_response"/>
+            <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 
