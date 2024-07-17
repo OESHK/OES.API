@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="REST API endpoints for slice definitions" id="endpoints_examination_script_defs.slice_defs">
+
+    <tldr>
+        <p>
+            Use <code>script_defs/slice_defs</code> endpoints to access and interact with
+            examination script slice definitions.
+        </p>
+    </tldr>
+
+    <p>
+        Slice definitions define how an image of a candidate's answer script is sliced.
+    </p>
+
+    <chapter title="Create slice definition" id="create-def">
+        <tldr>
+            <p><code>POST /v1/script_defs/{script_def_id}/slice_defs</code></p>
+            <p>Creates a new script slice definition.</p>
+        </tldr>
+
+        <tip>
+            Slice definitions are immutable. They cannot be modified upon successful creation.
+            You must delete them in order to change definitions.
+        </tip>
+
+        <chapter title="Request parameters" id="create-def-params">
+            <chapter title="Path parameters" id="create-def-params-path">
+                <deflist>
+
+                    <def>
+                        <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            The ID of the examination script definition to which the slice definition
+                            belongs.
+                        </p>
+                    </def>
+
+                </deflist>
+            </chapter>
+
+            <chapter title="Body parameters" id="create-def-params-body">
+                <deflist>
+
+                    <def>
+                        <title><code>page</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            The number of the page on which the slice will be made.
+                            This number must not exceed the total page number of the examination
+                            script to which the slice belongs.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title>
+                            <code>image_margin</code>:
+                            <code><a href="types_ref.topic#t--image-margin"/></code>
+                            (<b>required</b>)
+                        </title>
+                        <p>
+                            Defines where the slice will be made on the page.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>panel_id</code>: <code>integer</code></title>
+                        <p>
+                            The marking panel which will be responsible for marking the questions
+                            that appear on this slice.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>order_in_panel</code>: <code>integer</code></title>
+                        <p>
+                            The order of this slice within the marking panel when multiple
+                            slices are defined for the same panel.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title>
+                            <code>link_to_slice</code>:
+                            <code>slice_def_id (integer)</code>
+                        </title>
+                        <p>
+                            Link this slice to another slice with the specified slice definition ID.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>order_in_linkage</code>: <code>integer</code></title>
+                        <p>
+                            The order of this slice when multiple slices are linked to the same
+                            parent slice specified in <code>link_to_slice</code>.
+                        </p>
+                    </def>
+
+                    <def>
+                        <title><code>link_to_qnb</code>: <code>integer</code></title>
+                        <p>
+                            The ID of the question number box definition to which this slice is
+                            linked. The slice is automatically assigned to the marking panel
+                            that is responsible for marking the question chosen in the question
+                            number box.
+                        </p>
+                        <p>
+                            Only one slice under the same examination script definition can link
+                            to the same question number box definition. To link multiple pages to
+                            one question number box, please use <code>link_to_slice</code> for
+                            subsequent slices.
+                        </p>
+                    </def>
+
+                </deflist>
+                <note>
+                    <p>A slice definition must either link to a marking panel, another slice, or
+                    a question number box definition. That means one and only one of the following
+                    combinations of body parameters MUST contain valid value(s):</p>
+                    <list>
+                        <li>
+                            <code>link_to_panel</code> <b>AND</b> <code>order_in_panel</code>; OR
+                        </li>
+                        <li>
+                            <code>link_to_slice</code> <b>AND</b> <code>order_in_linkage</code>; OR
+                        </li>
+                        <li>
+                            <code>link_to_qnb</code>
+                        </li>
+                    </list>
+                    <p>A <code>422 Not Processable</code> response is generated if none or more
+                    than one combination of body parameters contain value(s).</p>
+                </note>
+            </chapter>
+        </chapter>
+    </chapter>
+
+</topic>

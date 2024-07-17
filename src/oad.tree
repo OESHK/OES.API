@@ -19,6 +19,7 @@
                 <toc-element toc-title="Non-MC Questions"
                              topic="endpoints_examination_script_defs.question_defs.non_mcqs.topic"/>
             </toc-element>
+            <toc-element topic="endpoints_examination_script_defs.slice_defs.topic" toc-title="Slice Definitions"/>
         </toc-element>
         <toc-element toc-title="Marking Panels" topic="endpoints_marking_panels.topic"/>
         <toc-element topic="endpoints_qnb_definitions.topic" toc-title="Question No. Box Definitions"/>
