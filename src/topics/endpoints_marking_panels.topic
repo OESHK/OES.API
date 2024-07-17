@@ -111,7 +111,7 @@
                 </note>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
-            <include from="http_responses_lib.topic" element-id="general_422_response"/>
+            <include from="http_responses_lib.topic" element-id="422-general"/>
         </chapter>
 
     </chapter>

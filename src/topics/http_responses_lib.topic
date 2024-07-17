@@ -36,7 +36,7 @@
         </procedure>
     </snippet>
 
-    <snippet id="general_422_response">
+    <snippet id="422-general">
         <procedure collapsible="true">
             <title><code>422 Unprocessable</code></title>
             <p>The request contains error and cannot be processed.</p>
