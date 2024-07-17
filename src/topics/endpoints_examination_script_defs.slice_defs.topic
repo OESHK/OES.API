@@ -136,6 +136,31 @@
                 </note>
             </chapter>
         </chapter>
+
+        <chapter title="Responses" id="create-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the created slice definition. Sample response:</p>
+                <code-block lang="json">
+                    {
+                        "slice_definition_id": 2838,
+                        "page": 3,
+                        "image_margin": "10.5,5.5,13.7,5.5",
+                        "panel_id": 1230,
+                        "order_in_panel": 1,
+                        "link_to_slice": null,
+                        "order_in_linkage": null,
+                        "link_to_qnb": null
+                    }
+                </code-block>
+                <note>
+                    <code>slice_definition_id</code> is automatically assigned upon successful creation.
+                </note>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+            <include from="http_responses_lib.topic" element-id="general_422_response"/>
+        </chapter>
     </chapter>
 
 </topic>
