@@ -3,7 +3,8 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="REST API endpoints for slice definitions" id="endpoints_examination_script_defs.slice_defs">
+       title="REST API endpoints for slice definitions" id="endpoints_examinations.examination_script_defs.slice_defs"
+       help-id="endpoints_examination_script_defs.slice_defs">
 
     <tldr>
         <p>
@@ -182,7 +183,7 @@
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.slice_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
                              element-id="reuse-param--path-script-def-id"/>
 
                     <def>
@@ -219,7 +220,7 @@
             <chapter title="Path parameters" id="list-defs-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.slice_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
                               element-id="reuse-param--path-script-def-id"/>
 
                 </deflist>
@@ -281,7 +282,7 @@
             <chapter title="Path parameters" id="get-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.slice_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
                              element-id="reuse-param--path-script-def-id"/>
 
                     <def>
@@ -297,7 +298,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the required slice definition. Sample response:</p>
-                <include from="endpoints_examination_script_defs.slice_defs.topic"
+                <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
                          element-id="reuse-code--slice-def"/>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>

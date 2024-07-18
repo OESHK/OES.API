@@ -8,17 +8,17 @@
     <toc-element topic="intro.md" toc-title="Welcome"/>
     <toc-element toc-title="REST Endpoints Reference">
         <toc-element toc-title="Examinations" topic="endpoints_examinations.topic">
-            <toc-element topic="endpoints_examination_script_defs.topic">
+            <toc-element topic="endpoints_examinations.examination_script_defs.topic">
                 <toc-element toc-title="MC Sheet Definitions"
-                             topic="endpoints_examination_script_defs.mc_sheet_defs.topic"/>
+                             topic="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"/>
                 <toc-element toc-title="Question Definitions"
-                             topic="endpoints_examination_script_defs.question_defs.topic">
+                             topic="endpoints_examinations.examination_script_defs.question_defs.topic">
                     <toc-element toc-title="MC Questions"
-                                 topic="endpoints_examination_script_defs.question_defs.mcqs.topic"/>
+                                 topic="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"/>
                     <toc-element toc-title="Non-MC Questions"
-                                 topic="endpoints_examination_script_defs.question_defs.non_mcqs.topic"/>
+                                 topic="endpoints_examinations.examination_script_defs.question_defs.non_mcqs.topic"/>
                 </toc-element>
-                <toc-element toc-title="Slice Definitions" topic="endpoints_examination_script_defs.slice_defs.topic"/>
+                <toc-element toc-title="Slice Definitions" topic="endpoints_examinations.examination_script_defs.slice_defs.topic"/>
             </toc-element>
             <toc-element toc-title="Candidates Entries" topic="endpoints_examinations.candidates_entries.topic"/>
         </toc-element>

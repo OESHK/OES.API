@@ -3,7 +3,8 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Non-MC Questions" id="endpoints_examination_script_defs.question_defs.non_mcqs">
+       title="Non-MC Questions" id="endpoints_examinations.examination_script_defs.question_defs.non_mcqs"
+       help-id="endpoints_examination_script_defs.question_defs.non_mcqs">
 
     <title>REST API endpoints for Non-MCQs</title>
 
@@ -123,7 +124,7 @@
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
 
                     <snippet id="reuse-param--path-non-mcq-def-id"><def>
                         <title><code>non_mcq_def_id</code>: <code>integer</code> (<b>required</b>)</title>
@@ -153,7 +154,7 @@
             <chapter title="Path parameters" id="list-defs-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
 
                 </deflist>
             </chapter>
@@ -192,9 +193,9 @@
             <chapter title="Path parameters" id="get-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-script-def-id"/>
 
-                    <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-non-mcq-def-id"/>
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-param--path-non-mcq-def-id"/>
 
                 </deflist>
             </chapter>
@@ -204,7 +205,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the retrieved non-MCQ definition. Sample response:</p>
-                <include from="endpoints_examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-code--non-mcq-def"/>
+                <include from="endpoints_examinations.examination_script_defs.question_defs.non_mcqs.topic" element-id="reuse-code--non-mcq-def"/>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="404-general"/>

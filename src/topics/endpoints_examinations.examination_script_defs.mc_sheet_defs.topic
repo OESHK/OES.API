@@ -3,7 +3,8 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       id="endpoints_examination_script_defs.mc_sheet_defs" title="REST API endpoints for MC sheet definitions">
+       id="endpoints_examinations.examination_script_defs.mc_sheet_defs" title="REST API endpoints for MC sheet definitions"
+       help-id="endpoints_examination_script_defs.mc_sheet_defs">
 
     <tldr>
         <p>
@@ -151,7 +152,7 @@
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
                              element-id="reuse-param--path-exam-id"/>
 
                     <snippet id="reuse-param--path-script-def-id"><def>
@@ -195,10 +196,10 @@
             <chapter title="Path parameters" id="get-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
                              element-id="reuse-param--path-exam-id"/>
 
-                    <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
                              element-id="reuse-param--path-script-def-id"/>
 
                 </deflist>
@@ -209,7 +210,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the retrieved MC sheet definition. Sample response:</p>
-                <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
                          element-id="reuse-code--mc-sheet-def"/>
             </procedure>
             <procedure collapsible="true">
@@ -220,7 +221,7 @@
                 </p>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
-            <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+            <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
                      element-id="reuse-response--404-no-mc-sheet-defined"/>
         </chapter>
     </chapter>
