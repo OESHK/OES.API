@@ -3,11 +3,12 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="REST API endpoints for slice definitions" id="endpoints_examination_script_defs.slice_defs">
+       title="REST API endpoints for slice definitions" id="endpoints_examinations.examination_script_defs.slice_defs"
+       help-id="endpoints_examination_script_defs.slice_defs">
 
     <tldr>
         <p>
-            Use <code>script_defs/slice_defs</code> endpoints to access and interact with
+            Use <code>examinations/script_defs/slice_defs</code> endpoints to access and interact with
             examination script slice definitions.
         </p>
     </tldr>
@@ -18,7 +19,7 @@
 
     <chapter title="Create slice definition" id="create-def">
         <tldr>
-            <p><code>POST /v1/script_defs/{script_def_id}/slice_defs</code></p>
+            <p><code>POST /v1/examinations/{exam_id}/script_defs/{script_def_id}/slice_defs</code></p>
             <p>Creates a new script slice definition.</p>
         </tldr>
 
@@ -30,6 +31,13 @@
         <chapter title="Request parameters" id="create-def-params">
             <chapter title="Path parameters" id="create-def-params-path">
                 <deflist>
+
+                    <snippet id="reuse-param--path-exam-id"><def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            The ID of the examination to which the slice definition belongs to.
+                        </p>
+                    </def></snippet>
 
                     <snippet id="reuse-param--path-script-def-id"><def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
@@ -167,7 +175,7 @@
 
     <chapter title="Delete a slice definition" id="delete-def">
         <tldr>
-            <p><code>DELETE /v1/script_defs/{script_def_id}/slice_defs/{slice_def_id}</code></p>
+            <p><code>DELETE /v1/examinations/{exam_id}/script_defs/{script_def_id}/slice_defs/{slice_def_id}</code></p>
             <p>Deletes an existing slice definition.</p>
         </tldr>
 
@@ -182,7 +190,10 @@
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.slice_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
+                             element-id="reuse-param--path-exam-id"/>
+
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
                              element-id="reuse-param--path-script-def-id"/>
 
                     <def>
@@ -206,7 +217,7 @@
 
     <chapter title="Get a list of slice definitions" id="list-defs">
         <tldr>
-            <p><code>GET /v1/script_defs/{script_def_id}/slice_defs</code></p>
+            <p><code>GET /v1/examinations/{exam_id}/script_defs/{script_def_id}/slice_defs</code></p>
             <p>Gets a list of slice definitions under an examination script definition.</p>
         </tldr>
 
@@ -219,8 +230,11 @@
             <chapter title="Path parameters" id="list-defs-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.slice_defs.topic"
-                              element-id="reuse-param--path-script-def-id"/>
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
+                             element-id="reuse-param--path-exam-id"/>
+
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
+                             element-id="reuse-param--path-script-def-id"/>
 
                 </deflist>
             </chapter>
@@ -273,7 +287,7 @@
 
     <chapter title="Get a slice definition" id="get-def">
         <tldr>
-            <p><code>GET /v1/script_defs/{script_def_id}/slice_defs/{slice_def_id}</code></p>
+            <p><code>GET /v1/examinations/{exam_id}/script_defs/{script_def_id}/slice_defs/{slice_def_id}</code></p>
             <p>Gets a specific slice definition by its ID.</p>
         </tldr>
 
@@ -281,7 +295,10 @@
             <chapter title="Path parameters" id="get-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.slice_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
+                             element-id="reuse-param--path-exam-id"/>
+
+                    <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
                              element-id="reuse-param--path-script-def-id"/>
 
                     <def>
@@ -297,7 +314,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the required slice definition. Sample response:</p>
-                <include from="endpoints_examination_script_defs.slice_defs.topic"
+                <include from="endpoints_examinations.examination_script_defs.slice_defs.topic"
                          element-id="reuse-code--slice-def"/>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>

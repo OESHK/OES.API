@@ -3,11 +3,11 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="REST API endpoints for question definitions" id="endpoints_examination_script_defs.question_defs"
-       help-id="endpoints_examinations_script_defs.question_defs">
+       title="REST API endpoints for question definitions" id="endpoints_examinations.examination_script_defs.question_defs"
+       help-id="endpoints_examinations_script_defs.question_defs;endpoints_examination_script_defs.question_defs">
 
     <tldr>
-        <p>Use <code>script_defs/question_defs</code> endpoints to define
+        <p>Use <code>examinations/script_defs/question_defs</code> endpoints to define
         different types of questions, including MCQs and Non-MCQs.</p>
     </tldr>
 
@@ -18,10 +18,10 @@
     </note>
 
     <p>
-        Endpoints under path <code>script_defs/question_defs</code> are further divided into
-        <a href="endpoints_examination_script_defs.question_defs.mcqs.topic"><code>mcqs</code></a>
+        Endpoints under path <code>examinations/script_defs/question_defs</code> are further divided into
+        <a href="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"><code>mcqs</code></a>
         (for multiple-choice questions) and
-        <a href="endpoints_examination_script_defs.question_defs.non_mcqs.topic"><code>non_mcqs</code></a>
+        <a href="endpoints_examinations.examination_script_defs.question_defs.non_mcqs.topic"><code>non_mcqs</code></a>
         (for non-multiple-choice questions).
         Refer to respective documents for API references.
     </p>

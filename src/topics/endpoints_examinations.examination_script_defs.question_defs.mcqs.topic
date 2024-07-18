@@ -3,11 +3,12 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="REST API endpoints for MCQs" id="endpoints_examination_script_defs.question_defs.mcqs">
+       title="REST API endpoints for MCQs" id="endpoints_examinations.examination_script_defs.question_defs.mcqs"
+       help-id="endpoints_examination_script_defs.question_defs.mcqs">
 
     <tldr>
         <p>
-            Use <code>script_defs/question_defs/mcqs</code> endpoints to define
+            Use <code>examinations/script_defs/question_defs/mcqs</code> endpoints to define
             an MCQ's image location, options location, answers, etc.
         </p>
     </tldr>
@@ -16,7 +17,7 @@
 
     <chapter title="Create an MCQ definition" id="create-mcq">
         <tldr>
-            <p><code>POST /v1/script_defs/{script_def_id}/question_defs/mcqs</code></p>
+            <p><code>POST /v1/examinations/{exam_id}/script_defs/{script_def_id}/question_defs/mcqs</code></p>
             <p>Creates a new MCQ definition in an examination script.</p>
         </tldr>
 
@@ -30,8 +31,13 @@
                 <deflist>
 
                     <def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which the MCQ belongs.</p>
+                    </def>
+
+                    <def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
-                        The ID of the script definition.
+                        The ID of the script definition to which the MCQ belongs.
                     </def>
 
                 </deflist>

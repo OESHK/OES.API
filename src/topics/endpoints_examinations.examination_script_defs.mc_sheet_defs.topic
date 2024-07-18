@@ -3,11 +3,12 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       id="endpoints_examination_script_defs.mc_sheet_defs" title="REST API endpoints for MC sheet definitions">
+       id="endpoints_examinations.examination_script_defs.mc_sheet_defs" title="REST API endpoints for MC sheet definitions"
+       help-id="endpoints_examination_script_defs.mc_sheet_defs">
 
     <tldr>
         <p>
-            Use <code>script_defs/mc_sheet_def</code> endpoint to access multiple-choice
+            Use <code>examinations/script_defs/mc_sheet_def</code> endpoint to access multiple-choice
             answer sheet definitions.
         </p>
     </tldr>
@@ -16,7 +17,7 @@
 
     <chapter title="Create an MC sheet definition" id="create-def">
         <tldr>
-            <p><code>POST /v1/script_defs/{script_def_id}/mc_sheet_def</code></p>
+            <p><code>POST /v1/examinations/{exam_id}/script_defs/{script_def_id}/mc_sheet_def</code></p>
             Creates a new MC sheet definition.
         </tldr>
 
@@ -31,6 +32,13 @@
         <chapter title="Request parameters" id="create-def-params">
             <chapter title="Path parameters" id="create-def-params-path">
                 <deflist>
+
+                    <snippet id="reuse-param--path-exam-id"><def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            The ID of the examination to which the MC sheet definition belongs.
+                        </p>
+                    </def></snippet>
 
                     <def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
@@ -113,10 +121,7 @@
                 </p>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
-            <procedure collapsible="true">
-                <title><code>404 Not Found</code></title>
-                <p>The <code>script_def_id</code> does not match any examination script definition.</p>
-            </procedure>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
             <procedure collapsible="true">
                 <title><code>409 Conflict</code></title>
                 <p>
@@ -130,7 +135,9 @@
 
     <chapter title="Delete an MC sheet definition" id="delete-def">
         <tldr>
-            <p><code>DELETE /v1/script_defs/{script_def_id}/mc_sheet_def</code></p>
+            <p>
+                <code>DELETE /v1/examinations/{exam_id}/script_defs/{script_def_id}/mc_sheet_def</code>
+            </p>
             <p>Deletes an existing MC sheet definition.</p>
         </tldr>
 
@@ -144,6 +151,9 @@
         <chapter title="Request parameters" id="delete-def-params">
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
+
+                    <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
+                             element-id="reuse-param--path-exam-id"/>
 
                     <snippet id="reuse-param--path-script-def-id"><def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
@@ -164,6 +174,11 @@
             <snippet id="reuse-response--404-no-mc-sheet-defined"><procedure collapsible="true">
                 <title><code>404 Not Found</code></title>
                 <p>
+                    The specified <code>exam_id</code> and/or <code>script_def_id</code> matches
+                    not entity.
+                </p>
+                <p><b>-OR-</b></p>
+                <p>
                     The specified examination script definition does not have an MC sheet
                     definition created.
                 </p>
@@ -173,7 +188,7 @@
 
     <chapter title="Get the MC sheet definition" id="get-def">
         <tldr>
-            <p><code>GET /v1/script_defs/{script_def_id}/mc_sheet_def</code></p>
+            <p><code>GET /v1/examinations/{exam_id}/script_defs/{script_def_id}/mc_sheet_def</code></p>
             <p>Gets the MC sheet definition defined under the examination script definition.</p>
         </tldr>
 
@@ -181,7 +196,10 @@
             <chapter title="Path parameters" id="get-def-params-path">
                 <deflist>
 
-                    <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                    <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
+                             element-id="reuse-param--path-exam-id"/>
+
+                    <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
                              element-id="reuse-param--path-script-def-id"/>
 
                 </deflist>
@@ -192,7 +210,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the retrieved MC sheet definition. Sample response:</p>
-                <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+                <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
                          element-id="reuse-code--mc-sheet-def"/>
             </procedure>
             <procedure collapsible="true">
@@ -203,7 +221,7 @@
                 </p>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
-            <include from="endpoints_examination_script_defs.mc_sheet_defs.topic"
+            <include from="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"
                      element-id="reuse-response--404-no-mc-sheet-defined"/>
         </chapter>
     </chapter>
