@@ -9,7 +9,8 @@
     <toc-element toc-title="REST Endpoints Reference">
         <toc-element toc-title="Examinations" topic="endpoints_examinations.topic">
             <toc-element toc-title="Candidates Entries" topic="endpoints_examinations.candidates_entries.topic"/>
-            <toc-element topic="endpoints_examinations.examination_script_defs.topic">
+            <toc-element topic="endpoints_examinations.examination_script_defs.topic"
+                         toc-title="Examination Script Definitions">
                 <toc-element toc-title="MC Sheet Definitions"
                              topic="endpoints_examinations.examination_script_defs.mc_sheet_defs.topic"/>
                 <toc-element toc-title="Question Definitions"
