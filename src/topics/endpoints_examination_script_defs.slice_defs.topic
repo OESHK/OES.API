@@ -31,13 +31,13 @@
             <chapter title="Path parameters" id="create-def-params-path">
                 <deflist>
 
-                    <def>
+                    <snippet id="reuse-param--path-script-def-id"><def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>
                             The ID of the examination script definition to which the slice definition
                             belongs.
                         </p>
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -157,9 +157,49 @@
                     <code>slice_definition_id</code> is automatically assigned upon successful creation.
                 </note>
             </procedure>
+            <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
             <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="404-general"/>
             <include from="http_responses_lib.topic" element-id="422-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Delete a slice definition" id="delete-def">
+        <tldr>
+            <p><code>DELETE /v1/script_defs/{script_def_id}/slice_defs/{slice_def_id}</code></p>
+            <p>Deletes an existing slice definition.</p>
+        </tldr>
+
+        <warning>
+            <p>
+                If the slice definition being deleted has other definitions liked to it,
+                the deletion will also cascade on those definitions.
+            </p>
+        </warning>
+
+        <chapter title="Request parameters" id="delete-def-params">
+            <chapter title="Path parameters" id="delete-def-params-path">
+                <deflist>
+
+                    <include from="endpoints_examination_script_defs.slice_defs.topic"
+                             element-id="reuse-param--path-script-def-id"/>
+
+                    <def>
+                        <title><code>slice_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>
+                            The ID of the slice definition.
+                        </p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="delete-def-responses">
+            <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
+            <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
     </chapter>
 

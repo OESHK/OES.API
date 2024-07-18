@@ -14,7 +14,7 @@
 
     <chapter title="List examinations" id="list-all-exams">
         <tldr>
-            <p><code lang="http">GET /v1/examinations</code></p>
+            <p><code>GET /v1/examinations</code></p>
             <p>Lists all examination objects.</p>
         </tldr>
 

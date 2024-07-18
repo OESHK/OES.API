@@ -6,6 +6,8 @@
     <build-profile instance="oad">
         <variables>
             <noindex-content>true</noindex-content>
+            <primary-color>emerald</primary-color>
+            <color-preset>vivid</color-preset>
         </variables>
     </build-profile>
     <build-profile instance="api-v1">
