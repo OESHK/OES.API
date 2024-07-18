@@ -141,7 +141,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the created slice definition. Sample response:</p>
-                <code-block lang="json">
+                <snippet id="reuse-code--slice-def"><code-block lang="json">
                     {
                         "slice_definition_id": 2838,
                         "script_definition_id": 4927,
@@ -153,7 +153,7 @@
                         "order_in_linkage": null,
                         "link_to_qnb": null
                     }
-                </code-block>
+                </code-block></snippet>
                 <note>
                     <code>slice_definition_id</code> is automatically assigned upon successful creation.
                 </note>
@@ -265,6 +265,40 @@
                     appended at the end of the list returned and are sorted in ascending order
                     of their <code>slice_definition_id</code>.
                 </p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get a slice definition" id="get-def">
+        <tldr>
+            <p><code>GET /v1/script_defs/{script_def_id}/slice_defs/{slice_def_id}</code></p>
+            <p>Gets a specific slice definition by its ID.</p>
+        </tldr>
+
+        <chapter title="Request parameters" id="get-def-params">
+            <chapter title="Path parameters" id="get-def-params-path">
+                <deflist>
+
+                    <include from="endpoints_examination_script_defs.slice_defs.topic"
+                             element-id="reuse-param--path-script-def-id"/>
+
+                    <def>
+                        <title><code>slice_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the slice definition.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="get-def-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the required slice definition. Sample response:</p>
+                <include from="endpoints_examination_script_defs.slice_defs.topic"
+                         element-id="reuse-code--slice-def"/>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="404-general"/>
