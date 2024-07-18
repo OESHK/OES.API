@@ -22,8 +22,8 @@
                 <toc-element toc-title="Slice Definitions"
                              topic="endpoints_examinations.examination_script_defs.slice_defs.topic"/>
             </toc-element>
+            <toc-element toc-title="Marking Panels" topic="endpoints_examinations.marking_panels.topic"/>
         </toc-element>
-        <toc-element toc-title="Marking Panels" topic="endpoints_marking_panels.topic"/>
         <toc-element topic="endpoints_qnb_definitions.topic" toc-title="Question No. Box Definitions"/>
     </toc-element>
     <toc-element topic="enums_ref.topic">

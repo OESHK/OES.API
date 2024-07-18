@@ -3,7 +3,7 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       id="endpoints_marking_panels">
+       id="endpoints_examinations.marking_panels" help-id="endpoints_marking_panels">
 
     <title>REST API endpoints for marking panels</title>
     <tldr>
@@ -15,18 +15,23 @@
     <chapter title="Create a marking panel" id="create-panel">
 
         <tldr>
-            <p><code>POST /v1/marking_panels</code></p>
+            <p><code>POST /v1/examinations/{exam_id}/marking_panels</code></p>
             <p>Creates a new marking panel.</p>
         </tldr>
 
         <chapter title="Request parameters" id="create-panel-params">
-            <chapter title="Body parameters" id="create-panel-params-body">
+            <chapter title="Path parameters" id="create-panel-params-path">
                 <deflist>
 
-                    <def>
-                        <title><code>examination_id</code>: <code>integer</code> (<b>required</b>)</title>
-                        <p>The ID of the examination to which this marking panel is connected.</p>
-                    </def>
+                    <snippet id="reuse-param--path-exam-id"><def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which the marking panel belongs.</p>
+                    </def></snippet>
+
+                </deflist>
+            </chapter>
+            <chapter title="Body parameters" id="create-panel-params-body">
+                <deflist>
 
                     <def>
                         <title><code>panel_code</code>: <code>string</code> (<b>required</b>)</title>
@@ -116,15 +121,15 @@
 
     </chapter>
 
-    <chapter title="List marking panels of an examination" id="list-panels-of-exam">
+    <chapter title="List marking panels of an examination" id="list-panel">
 
         <tldr>
             <p><code>GET /v1/examinations/{exam_id}/marking_panels</code></p>
             <p>Lists all marking panels that is linked to the specified examination.</p>
         </tldr>
 
-        <chapter title="Request parameters" id="list-panels-of-exam-params">
-            <chapter title="Path parameters" id="list-panels-of-exam-params-path">
+        <chapter title="Request parameters" id="list-panels-params">
+            <chapter title="Path parameters" id="list-panels-params-path">
                 <deflist>
 
                     <def>
@@ -136,7 +141,7 @@
             </chapter>
         </chapter>
 
-        <chapter title="Responses" id="list-panels-of-exam-responses">
+        <chapter title="Responses" id="list-panels-responses">
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns an array of marking panels for the examination.</p>
@@ -148,20 +153,19 @@
 
     </chapter>
 
-    <chapter title="Get a marking panel of an examination" id="get-panel-of-exam">
+    <chapter title="Get a marking panel of an examination" id="get-panel">
         <tldr>
             <p><code>GET /v1/examinations/{exam_id}/marking_panels/{panel_id}</code></p>
             <p>Gets a specific marking panel of an examination.</p>
         </tldr>
 
         <note>
-            Attempt to retrieve an existing marking panel that does not belong to the given examination will result in a <code>404</code> response.
-            If you have a marking panel ID but do not know which examination it belongs to,
-            <a href="#get-panel">get a marking panel by ID</a> instead.
+            Attempt to retrieve an existing marking panel that does not belong to the given
+            examination will result in a <code>404</code> response.
         </note>
 
-        <chapter title="Request parameters" id="get-panel-of-exam-params">
-            <chapter title="Path parameters" id="get-panel-of-exam-params-path">
+        <chapter title="Request parameters" id="get-panel-params">
+            <chapter title="Path parameters" id="get-panel-params-path">
                 <deflist>
 
                     <def>
@@ -178,52 +182,20 @@
             </chapter>
         </chapter>
 
-        <chapter title="Responses" id="get-panel-of-exam-responses">
-            <procedure collapsible="true" default-state="expanded">
-                <title><code>200 OK</code></title>
-                <p>Sample response:</p>
-                <include from="endpoints_marking_panels.topic" element-id="sample-code--marking-panel"/>
-            </procedure>
-            <include from="http_responses_lib.topic" element-id="403-general"/>
-            <include from="http_responses_lib.topic" element-id="404-general"/>
-        </chapter>
-    </chapter>
-
-    <chapter title="Get a marking panel" id="get-panel">
-
-        <tldr>
-            <p><code>GET /v1/marking_panels/{panel_id}</code></p>
-            <p>Gets a marking panel by its ID.</p>
-        </tldr>
-
-        <chapter title="Request parameters" id="get-panel-params">
-            <chapter title="Path parameters" id="get-panel-params-path">
-                <deflist>
-
-                    <def>
-                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
-                        <p>The ID of the marking panel.</p>
-                    </def>
-
-                </deflist>
-            </chapter>
-        </chapter>
-
         <chapter title="Responses" id="get-panel-responses">
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
-                <p>Returns the requested marking panel. Sample response:</p>
-                <include from="endpoints_marking_panels.topic" element-id="sample-code--marking-panel"/>
+                <p>Sample response:</p>
+                <include from="endpoints_examinations.marking_panels.topic" element-id="sample-code--marking-panel"/>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
-
     </chapter>
 
     <chapter title="Update a marking panel" id="update-panel">
         <tldr>
-            <p><code>PATCH /v1/marking_panels/{panel_id}</code></p>
+            <p><code>PATCH /v1/examinations/{exam_id}/marking_panels/{panel_id}</code></p>
             <p>Updates the fields of the marking panel.</p>
         </tldr>
 
@@ -237,6 +209,9 @@
         <chapter title="Request parameters" id="update-panel-params">
             <chapter title="Path parameters" id="update-panel-params-path">
                 <deflist>
+
+                    <include from="endpoints_examinations.marking_panels.topic"
+                             element-id="reuse-param--path-exam-id"/>
 
                     <def>
                         <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
@@ -309,7 +284,7 @@
 
     <chapter title="Delete a marking panel" id="delete-panel">
         <tldr>
-            <p><code>DELETE /v1/marking_panels/{panel_id}</code></p>
+            <p><code>DELETE /v1/examinations/{exam_id}/marking_panels/{panel_id}</code></p>
             Deletes an existing marking panel.
         </tldr>
         <p>
@@ -322,6 +297,9 @@
         <chapter title="Request parameters" id="delete-panel-params">
             <chapter title="Path parameters" id="delete-panel-params-path">
                 <deflist>
+
+                    <include from="endpoints_examinations.marking_panels.topic"
+                             element-id="reuse-param--path-exam-id"/>
 
                     <def>
                         <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>

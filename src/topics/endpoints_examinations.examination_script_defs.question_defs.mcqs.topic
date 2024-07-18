@@ -8,7 +8,7 @@
 
     <tldr>
         <p>
-            Use <code>script_defs/question_defs/mcqs</code> endpoints to define
+            Use <code>examinations/script_defs/question_defs/mcqs</code> endpoints to define
             an MCQ's image location, options location, answers, etc.
         </p>
     </tldr>
@@ -17,7 +17,7 @@
 
     <chapter title="Create an MCQ definition" id="create-mcq">
         <tldr>
-            <p><code>POST /v1/script_defs/{script_def_id}/question_defs/mcqs</code></p>
+            <p><code>POST /v1/examinations/{exam_id}/script_defs/{script_def_id}/question_defs/mcqs</code></p>
             <p>Creates a new MCQ definition in an examination script.</p>
         </tldr>
 
@@ -31,8 +31,13 @@
                 <deflist>
 
                     <def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which the MCQ belongs.</p>
+                    </def>
+
+                    <def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
-                        The ID of the script definition.
+                        The ID of the script definition to which the MCQ belongs.
                     </def>
 
                 </deflist>
