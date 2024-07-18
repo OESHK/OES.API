@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       id="welcome">
+
+    <title>Welcome to OES REST API Documentation</title>
+
+    <p>
+        The OEI REST API is the essential tools for interactions between server database and client software.
+        Developers may also utilise the API to create useful tools for extending the functionality
+        of the Online Examination System.
+    </p>
+
+    <p>
+        This documentation will provide information about the API endpoints, their request parameters,
+        return fields, etc.
+    </p>
+</topic>
