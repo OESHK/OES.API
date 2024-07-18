@@ -144,6 +144,7 @@
                 <code-block lang="json">
                     {
                         "slice_definition_id": 2838,
+                        "script_definition_id": 4927,
                         "page": 3,
                         "image_margin": "10.5,5.5,13.7,5.5",
                         "panel_id": 1230,
@@ -198,6 +199,73 @@
         <chapter title="Responses" id="delete-def-responses">
             <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
             <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get a list of slice definitions" id="list-defs">
+        <tldr>
+            <p><code>GET /v1/script_defs/{script_def_id}/slice_defs</code></p>
+            <p>Gets a list of slice definitions under an examination script definition.</p>
+        </tldr>
+
+        <p>
+            The returned list of slice definitions are always sorted in the order of their
+            <code>order_in_panel</code> or <code>order_in_linkage</code> properties.
+        </p>
+
+        <chapter title="Request parameters" id="list-defs-params">
+            <chapter title="Path parameters" id="list-defs-params-path">
+                <deflist>
+
+                    <include from="endpoints_examination_script_defs.slice_defs.topic"
+                              element-id="reuse-param--path-script-def-id"/>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses" id="list-defs-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>
+                    Returns the list of definitions in order. Sample response:
+                </p>
+                <code-block lang="json"
+                            collapsible="true"
+                            collapsed-title="Sample JSON payload">
+                    [
+                        {
+                            "slice_definition_id": 12,
+                            "script_definition_id": 23831,
+                            "page": 2,
+                            "image_margin": "10,10,10,10",
+                            "panel_id": 1223,
+                            "order_in_panel": 1,
+                            "link_to_slice": null,
+                            "order_in_linkage": null,
+                            "link_to_qnb": null
+                        },
+                        {
+                            "slice_definition_id": 13,
+                            "script_definition_id": 23831,
+                            "page": 3,
+                            "image_margin": "10,10,10,10",
+                            "panel_id": null,
+                            "order_in_panel": null,
+                            "link_to_slice": 12,
+                            "order_in_linkage": 1,
+                            "link_to_qnb": null
+                        }
+                    ]
+                </code-block>
+                <p>
+                    Definitions that are linked to question number box definitions are always
+                    appended at the end of the list returned and are sorted in ascending order
+                    of their <code>slice_definition_id</code>.
+                </p>
+            </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
