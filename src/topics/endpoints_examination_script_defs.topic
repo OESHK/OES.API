@@ -8,10 +8,12 @@
 
     <tldr>
         <p>
-            Use <code>script_defs</code> endpoints for interacting with examination script definitions.
+            Use <code>examinations/script_defs</code> endpoints for interacting with examination
+            script definitions.
             Examination script definitions tell the system how to process a scanned answer script by
-            defining the basic information about the script. The server looks for related slicing settings
-            that are linked to the script definition to further process the answer script image.
+            defining the basic information about the script. The server looks for related slicing
+            settings that are linked to the script definition to further process the answer script
+            image.
         </p>
     </tldr>
 
@@ -19,7 +21,7 @@
 
     <chapter title="Create a script definition" id="create-def">
         <tldr>
-            <p><code>POST /v1/script_defs</code></p>
+            <p><code>POST /v1/examinations/{exam_id}/script_defs</code></p>
             <p>Creates a new examination script definition.</p>
         </tldr>
 
@@ -32,13 +34,18 @@
         </tip>
 
         <chapter title="Request parameters" id="create-def-params">
-            <chapter title="Body parameters" id="create-def-params-body">
+            <chapter title="Path parameters" id="create-def-params-path">
                 <deflist>
 
                     <def>
                         <title><code>examination_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the examination to which this script definition belongs.</p>
                     </def>
+
+                </deflist>
+            </chapter>
+            <chapter title="Body parameters" id="create-def-params-body">
+                <deflist>
 
                     <def>
                         <title>
@@ -136,7 +143,7 @@
 
     <chapter title="Delete a script definition" id="delete-def">
         <tldr>
-            <p><code>DELETE /v1/script_defs/{script_def_id}</code></p>
+            <p><code>DELETE /v1/examinations/{exam_id}/script_defs/{script_def_id}</code></p>
             Deletes the specified examination script definition.
         </tldr>
 
@@ -148,6 +155,11 @@
         <chapter title="Request parameters" id="delete-def-params">
             <chapter title="Path parameters" id="delete-def-params-path">
                 <deflist>
+
+                    <def>
+                        <title><code>examination_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which this script definition belongs.</p>
+                    </def>
 
                     <def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
@@ -165,43 +177,7 @@
         </chapter>
     </chapter>
 
-    <chapter title="Get all script definitions of an examination" id="get-all-of-exam">
-        <tldr>
-            <p><code>GET /v1/examinations/{exam_id}/script_defs</code></p>
-            <p>Gets all script definitions of an examination.</p>
-        </tldr>
-
-        <chapter title="Request parameters" id="get-all-of-exam-params">
-            <chapter title="Body parameters" id="get-all-of-exam-params-path">
-                <deflist>
-
-                    <snippet id="reuse-params--path-exam-id"><def>
-                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
-                        <p>The ID of the examination.</p>
-                    </def></snippet>
-
-                </deflist>
-            </chapter>
-        </chapter>
-
-        <chapter title="Responses" id="get-all-of-exam-responses">
-            <procedure collapsible="true" default-state="expanded">
-                <title><code>200 OK</code></title>
-                <p>
-                    Returns an array of examination script definitions.
-                    An empty array is returned when the examination exists but no definitions have
-                    been created under the examination.
-                </p>
-            </procedure>
-            <include from="http_responses_lib.topic" element-id="403-general"/>
-            <procedure collapsible="true">
-                <title><code>404 Not Found</code></title>
-                <p>An examination with the specified <code>exam_id</code> could not be found.</p>
-            </procedure>
-        </chapter>
-    </chapter>
-
-    <chapter title="Get a script definition of an examination" id="get-def-of-exam">
+    <chapter title="Get a specific script definition" id="get-def-of-exam">
         <tldr>
             <p><code>GET /v1/examinations/{exam_id}/script_defs/{script_def_id}</code></p>
             <p>Gets a specific script definition under the specified examination.</p>
@@ -237,28 +213,39 @@
         </chapter>
     </chapter>
 
-    <chapter title="Get a script definition" id="get-def">
+    <chapter title="Get all script definitions" id="get-all-of-exam">
         <tldr>
-            <p><code>GET /v1/script_defs/{script_def_id}</code></p>
-            <p>Gets a specific examination script definition.</p>
+            <p><code>GET /v1/examinations/{exam_id}/script_defs</code></p>
+            <p>Gets all script definitions of an examination.</p>
         </tldr>
 
-        <chapter title="Request parameters" id="get-def-params">
-            <chapter title="Path parameters" id="get-def-params-path">
+        <chapter title="Request parameters" id="get-all-of-exam-params">
+            <chapter title="Body parameters" id="get-all-of-exam-params-path">
                 <deflist>
-                    <include from="endpoints_examination_script_defs.topic" element-id="reuse-params--path-script-def-id"/>
+
+                    <snippet id="reuse-params--path-exam-id"><def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination.</p>
+                    </def></snippet>
+
                 </deflist>
             </chapter>
         </chapter>
 
-        <chapter title="Responses" id="get-def-responses">
+        <chapter title="Responses" id="get-all-of-exam-responses">
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
-                <p>Returns the required examination script definition. Sample response:</p>
-                <include from="endpoints_examination_script_defs.topic" element-id="reuse-code--script-def"/>
+                <p>
+                    Returns an array of examination script definitions.
+                    An empty array is returned when the examination exists but no definitions have
+                    been created under the examination.
+                </p>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
-            <include from="http_responses_lib.topic" element-id="404-general"/>
+            <procedure collapsible="true">
+                <title><code>404 Not Found</code></title>
+                <p>An examination with the specified <code>exam_id</code> could not be found.</p>
+            </procedure>
         </chapter>
     </chapter>
 
