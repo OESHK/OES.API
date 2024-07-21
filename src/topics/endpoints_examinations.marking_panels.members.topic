@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="REST API endpoints for members in marking panels" id="endpoints_examinations.marking_panels.members">
+
+    <tldr>
+        <p>
+            Use <code>examinations/marking_panels/members</code> endpoints to manage assignment of markers.
+        </p>
+    </tldr>
+
+    <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
+
+    <chapter title="Add a user as a marker" id="add-marker">
+        <tldr>
+            <p><code>POST /v1/examinations/{exam_id}/marking_panels/{panel_id}/members/markers</code></p>
+            <p>Assigns a marker user as a marker under the specified marking panel.</p>
+        </tldr>
+
+        <chapter title="Request parameters">
+            <chapter title="Path parameters">
+                <deflist>
+
+                    <snippet id="reuse-param--path-exam-id"><def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which the marking panel belongs.</p>
+                    </def></snippet>
+
+                    <snippet id="reuse-param--path-panel-id"><def>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the marking panel.</p>
+                    </def></snippet>
+
+                </deflist>
+            </chapter>
+            <chapter title="Query parameter">
+                <deflist>
+
+                    <def>
+                        <title><code>marker_id</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>The ID of the marker user to be assigned as a marker.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <snippet id="reuse-response--204"><procedure collapsible="true" default-state="expanded">
+                <title><code>204 No Content</code></title>
+                <p>
+                    The request has been processed successfully. The updated list of members can be obtained
+                    by <a href="endpoints_examinations.marking_panels.topic#get-panel">getting the marking panel</a>.
+                </p>
+            </procedure></snippet>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Add a user as a supervisor" id="add-supervisor">
+        <tldr>
+            <p><code>POST /v1/examinations/{exam_id}/marking_panels/{panel_id}/members/supervisors</code></p>
+            <p>Assigns a marker user as a supervisor under the specified marking panel.</p>
+        </tldr>
+
+        <chapter title="Request parameters">
+            <chapter title="Path parameters">
+                <deflist>
+                    <include from="endpoints_examinations.marking_panels.members.topic"
+                             element-id="reuse-param--path-exam-id"/>
+                    <include from="endpoints_examinations.marking_panels.members.topic"
+                             element-id="reuse-param--path-panel-id"/>
+                </deflist>
+            </chapter>
+            <chapter title="Query parameters">
+                <deflist>
+
+                    <def>
+                        <title><code>marker_id</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>
+                            The ID of the marker user to be assigned as a supervisor.
+                        </p>
+                        <note>
+                            <p>The user will be made as the supervisor across all marking panels under the same
+                            examination.</p>
+                        </note>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <include from="endpoints_examinations.marking_panels.members.topic"
+                     element-id="reuse-response--204"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+</topic>
