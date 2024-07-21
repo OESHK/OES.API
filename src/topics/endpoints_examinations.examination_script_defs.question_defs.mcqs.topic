@@ -30,15 +30,15 @@
             <chapter title="Path parameters" id="create-mcq-params-path">
                 <deflist>
 
-                    <def>
+                    <snippet id="reuse-param--path-exam-id"><def>
                         <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the examination to which the MCQ belongs.</p>
-                    </def>
+                    </def></snippet>
 
-                    <def>
+                    <snippet id="reuse-param--path-script-def-id"><def>
                         <title><code>script_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         The ID of the script definition to which the MCQ belongs.
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -158,7 +158,38 @@
     </chapter>
 
     <chapter title="Delete an MCQ definition" id="delete-mcq">
+        <tldr>
+            <p><code>
+                DELETE /examinations/{exam_id}/script_definitions/{script_def_id}/question_defs/mcqs/{mcq_def_id}
+            </code></p>
+            <p>Deletes an existing MCQ definition.</p>
+        </tldr>
 
+        <chapter title="Request parameters" id="delete-mcq-params">
+            <chapter title="Path parameters">
+                <deflist>
+
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
+                             element-id="reuse-param--path-exam-id"/>
+
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
+                             element-id="reuse-param--path-script-def-id"/>
+
+                    <def>
+                        <title><code>mcq_def_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the MCQ definition.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
+            <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
     </chapter>
 
 </topic>
