@@ -119,7 +119,7 @@
             <procedure collapsible="true" default-state="expanded">
                 <title><code>200 OK</code></title>
                 <p>Returns the created MCQ definition. Sample response:</p>
-                <code-block lang="json">
+                <snippet id="reuse-code--mcq-def"><code-block lang="json">
                     {
                         "mcq_definition_id": 12343,
                         "script_definition_id": 2839,
@@ -148,7 +148,7 @@
                         "marking_mode": 1
                     }
 
-                </code-block>
+                </code-block></snippet>
                 <note><code>mcq_definition_id</code> is assigned automatically upon successful creation.</note>
             </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
@@ -160,7 +160,7 @@
     <chapter title="Delete an MCQ definition" id="delete-mcq">
         <tldr>
             <p><code>
-                DELETE /examinations/{exam_id}/script_definitions/{script_def_id}/question_defs/mcqs/{mcq_def_id}
+                DELETE /examinations/{exam_id}/script_defs/{script_def_id}/question_defs/mcqs/{mcq_def_id}
             </code></p>
             <p>Deletes an existing MCQ definition.</p>
         </tldr>
@@ -175,10 +175,10 @@
                     <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
                              element-id="reuse-param--path-script-def-id"/>
 
-                    <def>
+                    <snippet id="reuse-param--path-mcq-def-id"><def>
                         <title><code>mcq_def_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the MCQ definition.</p>
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -187,6 +187,85 @@
         <chapter title="Responses">
             <include from="http_responses_lib.topic" element-id="204-general--expanded"/>
             <include from="http_responses_lib.topic" element-id="400-exam-not-at-setup"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Get a list of MCQ definitions" id="get-mcqs">
+        <tldr>
+            <p><code>
+                GET /v1/examinations/{exam_id}/script_defs/{script_def_id}/question_defs/mcqs
+            </code></p>
+            <p>Gets all MCQ definitions under a examination script definition.</p>
+        </tldr>
+
+        <chapter title="Request parameters">
+            <chapter title="Path parameters">
+                <deflist>
+
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
+                             element-id="reuse-param--path-exam-id"/>
+
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
+                             element-id="reuse-param--path-script-def-id"/>
+
+                </deflist>
+            </chapter>
+            <chapter title="Query parameters">
+                <deflist>
+
+                    <def>
+                        <title><code>question_no</code>: <code>integer</code></title>
+                        <p>Filters the MCQ definitions by question number.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns an array of retrieved MCQ definitions.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Gets a MCQ definition" id="get-mcq">
+        <tldr>
+            <p><code>
+                GET /v1/examinations/{exam_id}/script_defs/{script_def_id}/question_defs/mcqs/{mcq_def_id}
+            </code></p>
+            <p>Gets a specific MCQ definition by its ID.</p>
+        </tldr>
+
+        <chapter title="Request parameters">
+            <chapter title="Path parameters">
+                <deflist>
+
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
+                             element-id="reuse-param--path-exam-id"/>
+
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
+                             element-id="reuse-param--path-script-def-id"/>
+
+                    <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
+                             element-id="reuse-param--path-mcq-def-id"/>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the required MCQ definition. Sample response:</p>
+                <include from="endpoints_examinations.examination_script_defs.question_defs.mcqs.topic"
+                         element-id="reuse-code--mcq-def"/>
+            </procedure>
             <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
