@@ -106,4 +106,41 @@
             </p>
         </chapter>
     </chapter>
+
+    <chapter id="t--option_definition">
+        <title><code>option_definition</code> (<code>object</code>)</title>
+
+        <tldr>
+            <p>Defines an option of a multiple-choice question.</p>
+        </tldr>
+
+        <chapter title="Syntax">
+            <code-block lang="json">
+                {
+                    "option_name": "option_name",
+                    "image_margin": "[[[image_margin|#t--image-margin]]]",
+                    "is_correct": true
+                }
+            </code-block>
+            <chapter title="Properties">
+                <deflist>
+                    <def>
+                        <title><code>option_name</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>The name of the option. For example, "A', "B", "T", "F", "NG", etc.</p>
+                    </def>
+                    <def>
+                        <title>
+                            <code>image_margin</code>:
+                            <code><a href="#t--image-margin"/></code> (<b>required</b>)
+                        </title>
+                        <p>The location information of the option.</p>
+                    </def>
+                    <def>
+                        <title><code>is_correct</code>: <code>boolean</code> (<b>required</b>)</title>
+                        <p>Whether this option is the correct answer to the question.</p>
+                    </def>
+                </deflist>
+            </chapter>
+        </chapter>
+    </chapter>
 </topic>
