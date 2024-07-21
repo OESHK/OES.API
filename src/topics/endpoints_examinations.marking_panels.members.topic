@@ -13,7 +13,7 @@
 
     <include from="api_endpoints_reusable.topic" element-id="notice-on-auth"/>
 
-    <chapter title="Add a user as a marker" id="add-marker">
+    <chapter title="Add a user as a general marker" id="add-marker">
         <tldr>
             <p><code>POST /v1/examinations/{exam_id}/marking_panels/{panel_id}/members/markers</code></p>
             <p>Assigns a marker user as a marker under the specified marking panel.</p>
@@ -86,8 +86,86 @@
                         <note>
                             <p>The user will be made as the supervisor across all marking panels under the same
                             examination.</p>
+                            <p>
+                                If the marker is already a supervisor in one of the marking panels of the same
+                                examination, the request does nothing and still will still generate a
+                                <code>204 No Content</code> response.
+                            </p>
                         </note>
                     </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <include from="endpoints_examinations.marking_panels.members.topic"
+                     element-id="reuse-response--204"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Remove a general marker" id="remove-general-marker">
+        <tldr>
+            <p><code>
+                DELETE /v1/examinations/{exam_id}/marking_panels/{panel_id}/members/markers/{marker_id}
+            </code></p>
+            <p>Removes the marker from the list of general markers.</p>
+        </tldr>
+
+        <note>
+            Any marking records made by the marker concerned will not be deleted. However, the marker will
+            lose access to the records once he/she is removed.
+        </note>
+
+        <chapter title="Request parameters">
+            <chapter title="Path parameters">
+                <deflist>
+
+                    <include from="endpoints_examinations.marking_panels.members.topic"
+                             element-id="reuse-param--path-exam-id"/>
+                    <include from="endpoints_examinations.marking_panels.members.topic"
+                             element-id="reuse-param--path-panel-id"/>
+                    <snippet id="reuse-param--path-marker-id"><def>
+                        <title><code>marker_id</code>: <code>string</code> (<b>required</b>)</title>
+                        <p>The ID of the marker.</p>
+                    </def></snippet>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <include from="endpoints_examinations.marking_panels.members.topic"
+                     element-id="reuse-response--204"/>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Remove a supervisor">
+        <tldr>
+            <p><code>
+                DELETE /v1/examinations/{exam_id}/marking_panels/{panel_id}/markers/supervisors/{marker_id}
+            </code></p>
+            <p>Removes the marker from the list of supervisors.</p>
+        </tldr>
+        <tip>
+            The marker user will lose access to all marking panels of the examination except those in which
+            the user is assigned as a general marker.
+        </tip>
+
+        <chapter title="Request parameters">
+            <chapter title="Path parameters">
+                <deflist>
+
+                    <include from="endpoints_examinations.marking_panels.members.topic"
+                             element-id="reuse-param--path-exam-id"/>
+                    <include from="endpoints_examinations.marking_panels.members.topic"
+                             element-id="reuse-param--path-panel-id"/>
+                    <include from="endpoints_examinations.marking_panels.members.topic"
+                             element-id="reuse-param--path-marker-id"/>
 
                 </deflist>
             </chapter>
