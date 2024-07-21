@@ -107,7 +107,7 @@
         </chapter>
     </chapter>
 
-    <chapter id="t--option_definition">
+    <chapter id="t--option-definition">
         <title><code>option_definition</code> (<code>object</code>)</title>
 
         <tldr>

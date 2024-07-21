@@ -71,15 +71,22 @@
                     </def>
 
                     <def>
-                        <title><code>question_range</code>:
+                        <title><code>question_image_margin</code>:
                             <code><a href="types_ref.topic#t--image-margin">image_margin</a></code>
                             (<b>required</b>)</title>
                         The location information about the question's image.
                     </def>
 
                     <def>
-                        <title><code>options_range</code>: <code>array&lt;option_definition&gt;</code> (<b>required</b>)</title>
-                        <p>An array of definitions of options of the MCQ.</p>
+                        <title>
+                            <code>options</code>:
+                            <code>array&lt;<a href="types_ref.topic#t--option-definition"/>&gt;</code>
+                            (<b>required</b>)</title>
+                        <p>
+                            An array of definitions of options of the MCQ. Read
+                            <a href="types_ref.topic#t--option-definition">documentations on object definition</a>
+                            for more information.
+                        </p>
                     </def>
 
                     <def>
@@ -92,7 +99,7 @@
                     </def>
 
                     <def>
-                        <title><code>mark_per_option</code>: <code>integer</code> (<b>required</b>)</title>
+                        <title><code>marks_per_option</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>
                             Marks given to the candidate per correctly-chosen option
                             when <code>marking_mode</code> is <code>0 (PenaltyOnIncorrect)</code>.
@@ -109,7 +116,44 @@
         </chapter>
 
         <chapter title="Responses" id="create-mcq-responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the created MCQ definition. Sample response:</p>
+                <code-block lang="json">
+                    {
+                        "mcq_definition_id": 12343,
+                        "script_definition_id": 2839,
+                        "question_no": 2,
+                        "panel_id": 138,
+                        "question_name": "2(a)(ii)",
+                        "question_image_margin": "3,7,8.92,10.33",
+                        "options": [
+                            {
+                                "option_name": "T",
+                                "image_margin": "1,1,1,1",
+                                "is_correct": false
+                            },
+                            {
+                                "option_name": "F",
+                                "image_margin": "2,2,2,2",
+                                "is_correct": false
+                            },
+                            {
+                                "option_name": "NG",
+                                "image_margin": "3,3,3,3",
+                                "is_correct": true
+                            }
+                        ],
+                        "marks_per_option": 1,
+                        "marking_mode": 1
+                    }
 
+                </code-block>
+                <note><code>mcq_definition_id</code> is assigned automatically upon successful creation.</note>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+            <include from="http_responses_lib.topic" element-id="422-general"/>
         </chapter>
     </chapter>
 
