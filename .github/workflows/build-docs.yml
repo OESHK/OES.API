@@ -15,7 +15,7 @@ concurrency:
 env:
     INSTANCE: 'src/oad'
     ARTIFACT: 'webHelpOAD2-all.zip'
-    DOCKER-VERSION: '241.16003'
+    DOCKER-VERSION: '241.18775'
 
 jobs:
     build:
