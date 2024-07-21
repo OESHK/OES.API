@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="REST API endpoints for API information" id="endpoints_api_info">
+
+    <tldr>
+        <p>
+            The <code>api_info</code> endpoint provides information about the server.
+        </p>
+    </tldr>
+
+    <chapter title="Get API information" id="get-api-info">
+        <tldr>
+            <p><code>GET /api_info</code></p>
+            <p>Gets information about the server that is hosting the OES API.</p>
+        </tldr>
+
+        <note>
+            <p>
+                The path for this endpoint <b>DOES NOT</b> include a version prefix, as the version information
+                is provided in the response.
+            </p>
+            <p>
+                This endpoint can be accessed anonymously.
+            </p>
+        </note>
+
+        <chapter title="Request parameters">
+            <p>This endpoint does not accept any request parameters.</p>
+        </chapter>
+
+        <chapter title="Responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>200 OK</code></title>
+                <p>Returns the information about the API server. Sample response:</p>
+                <code-block lang="json">
+                    {
+                        "api_version": "v1"
+                    }
+                </code-block>
+            </procedure>
+        </chapter>
+    </chapter>
+</topic>

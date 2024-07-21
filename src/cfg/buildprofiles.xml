@@ -8,6 +8,11 @@
             <primary-color>emerald</primary-color>
             <link-color>emerald</link-color>
         </variables>
+        <footer>
+            <link href="https://github.com/OESHK">GitHub</link>
+            <link href="https://github.com/OESHK/OES.ApiDocs">Source Repository</link>
+            <copyright>OESHK 2024</copyright>
+        </footer>
     </build-profile>
     <build-profile instance="api-v1">
         <variables>

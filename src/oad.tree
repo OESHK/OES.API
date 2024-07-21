@@ -7,6 +7,7 @@
 
     <toc-element topic="welcome.topic" toc-title="Welcome"/>
     <toc-element toc-title="REST Endpoints Reference">
+        <toc-element topic="endpoints_api_info.topic" toc-title="API Info"/>
         <toc-element toc-title="Examinations" topic="endpoints_examinations.topic">
             <toc-element toc-title="Candidates Entries" topic="endpoints_examinations.candidates_entries.topic"/>
             <toc-element topic="endpoints_examinations.examination_script_defs.topic"
