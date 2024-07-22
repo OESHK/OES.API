@@ -26,6 +26,7 @@
             </toc-element>
             <toc-element toc-title="Marking Panels" topic="endpoints_examinations.marking_panels.topic">
                 <toc-element topic="endpoints_examinations.marking_panels.members.topic" toc-title="Members"/>
+                <toc-element topic="endpoints_examinations.marking_panels.questions.topic" toc-title="Questions "/>
             </toc-element>
         </toc-element>
         <toc-element topic="endpoints_qnb_definitions.topic" toc-title="Question No. Box Definitions"/>

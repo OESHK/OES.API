@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="REST API endpoints for questions of marking panels" id="endpoints_examinations.marking_panels.questions">
+
+    <tldr>
+        <p>
+            Use <code>examinations/marking_panels/questions</code> endpoints to manage questions that are
+            linked to a marking panel.
+        </p>
+    </tldr>
+
+    <p>
+        <code>marking_panels/questions</code> only stores information about which non-MC question the marking
+        panel is responsible for marking. For defining details of a non-MC question, use
+        <a href="endpoints_examinations.examination_script_defs.question_defs.non_mcqs.topic"/>.
+    </p>
+
+    <chapter title="Add a question to the marking panel" id="add-question">
+        <tldr>
+            <p><code>
+                POST /v1/examinations/{exam_id}/marking_panels/{panel_id}/questions
+            </code></p>
+            <p>Links a question number to the marking panel.</p>
+        </tldr>
+
+        <chapter title="Request parameters">
+            <chapter title="Path parameters">
+                <deflist>
+
+                    <def>
+                        <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the examination to which the marking panel belongs.</p>
+                    </def>
+
+                    <def>
+                        <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The ID of the marking panel.</p>
+                    </def>
+
+                </deflist>
+            </chapter>
+            <chapter title="Query parameters">
+                <deflist>
+
+                    <def>
+                        <title><code>question_no</code>: <code>integer</code> (<b>required</b>)</title>
+                        <p>The question number to be associated to the marking panel.</p>
+                        <note>
+                            The question number must be unique across all marking panels of the same examination.
+                            Associating a question that has already been associated to another marking panel
+                            generates a <code>400 Bad Request</code> response.
+                        </note>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <procedure collapsible="true" default-state="expanded">
+                <title><code>204 No Content</code></title>
+                <p>
+                    The request completed successfully. Retrieve the list of questions that are associated
+                    to the marking panel by
+                    <a href="endpoints_examinations.marking_panels.topic#get-panel">getting a marking panel</a>.
+                </p>
+            </procedure>
+            <procedure collapsible="true">
+                <title><code>400 Bad Request</code></title>
+                <p>The question has already been associated to another marking panel of the same examination.</p>
+            </procedure>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+</topic>

@@ -8,7 +8,7 @@
     <title>REST API endpoints for candidates entries</title>
     <tldr>
         <p>
-            Use <code>examinations/candidates_entries</code> endpoints to
+            Use <code>examinations/candidates</code> endpoints to
             access candidates registration data of an examination.
         </p>
     </tldr>
