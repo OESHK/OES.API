@@ -30,15 +30,15 @@
             <chapter title="Path parameters">
                 <deflist>
 
-                    <def>
+                    <snippet id="reuse-param--path-exam-id"><def>
                         <title><code>exam_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the examination to which the marking panel belongs.</p>
-                    </def>
+                    </def></snippet>
 
-                    <def>
+                    <snippet id="reuse-param--path-panel-id"><def>
                         <title><code>panel_id</code>: <code>integer</code> (<b>required</b>)</title>
                         <p>The ID of the marking panel.</p>
-                    </def>
+                    </def></snippet>
 
                 </deflist>
             </chapter>
@@ -60,18 +60,52 @@
         </chapter>
 
         <chapter title="Responses">
-            <procedure collapsible="true" default-state="expanded">
+            <snippet id="reuse-procedure--response-204"><procedure collapsible="true" default-state="expanded">
                 <title><code>204 No Content</code></title>
                 <p>
                     The request completed successfully. Retrieve the list of questions that are associated
                     to the marking panel by
                     <a href="endpoints_examinations.marking_panels.topic#get-panel">getting a marking panel</a>.
                 </p>
-            </procedure>
+            </procedure></snippet>
             <procedure collapsible="true">
                 <title><code>400 Bad Request</code></title>
                 <p>The question has already been associated to another marking panel of the same examination.</p>
             </procedure>
+            <include from="http_responses_lib.topic" element-id="403-general"/>
+            <include from="http_responses_lib.topic" element-id="404-general"/>
+        </chapter>
+    </chapter>
+
+    <chapter title="Remove a question from the marking panel" id="remove-question">
+        <tldr>
+            <p><code>
+                DELETE /v1/examinations/{exam_id}/marking_panels/{panel_id}/questions/{question_no}
+            </code></p>
+            <p>
+                Removes a linked question from the marking panel.
+            </p>
+        </tldr>
+
+        <chapter title="Request parameters">
+            <chapter title="Path parameters">
+                <deflist>
+
+                    <include from="endpoints_examinations.marking_panels.questions.topic"
+                             element-id="reuse-param--path-exam-id"/>
+                    <include from="endpoints_examinations.marking_panels.questions.topic"
+                             element-id="reuse-param--path-panel-id"/>
+                    <def>
+                        <title><code>question_no</code>: <code>integer</code> (<b>required</b>)</title>
+                    </def>
+
+                </deflist>
+            </chapter>
+        </chapter>
+
+        <chapter title="Responses">
+            <include from="endpoints_examinations.marking_panels.questions.topic"
+                     element-id="reuse-procedure--response-204"/>
             <include from="http_responses_lib.topic" element-id="403-general"/>
             <include from="http_responses_lib.topic" element-id="404-general"/>
         </chapter>
